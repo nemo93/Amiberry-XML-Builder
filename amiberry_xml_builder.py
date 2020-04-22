@@ -8,14 +8,20 @@ import hashlib
 import openretroid
 import datetime
 import platform
-
 import tempfile
+from utils import text_utils
 from whdload import whdload_slave
 from slave_lha.parse_lha.read_lha import LhaSlaveArchive
 
-from utils import text_utils
+import ftputil
+import urllib.request
+import shutil
+from lxml import etree
+import xml.parsers.expat
 
-
+# =======================================
+# Methods
+# =======================================
 def sha1(fname):
     hash_sha1 = hashlib.sha1()
     with open(str(fname), "rb") as f:
@@ -75,18 +81,31 @@ def check_list(in_file, game_name):
 
     return answer
 
+# For XML sorting
+def sortchildrenby(parent, attr):
+    parent[:] = sorted(parent, key=lambda child: child.get(attr))
+
+# For XML validation
+def parsefile(file):
+    parser = xml.parsers.expat.ParserCreate()
+    parser.Parse(file)
+
 
 # =======================================
 # main section starting here...
+# =======================================
 
+script_version = '0.8'
 print()
 print(
-    text_utils.FontColours.BOLD + text_utils.FontColours.OKBLUE + "HoraceAndTheSpider and osvaldolove" + text_utils.FontColours.ENDC + "'s " + text_utils.FontColours.BOLD +
-    "Amiberry XML Builder" + text_utils.FontColours.ENDC + text_utils.FontColours.OKGREEN + " (0.5)" + text_utils.FontColours.ENDC + " | " + "" +
+    text_utils.FontColours.BOLD + text_utils.FontColours.OKBLUE + "HoraceAndTheSpider and osvaldolove's" + text_utils.FontColours.ENDC + text_utils.FontColours.BOLD +
+    " Amiberry XML Builder" + text_utils.FontColours.ENDC + text_utils.FontColours.OKGREEN + " ("+script_version+")" + text_utils.FontColours.ENDC + " | " + "" +
     text_utils.FontColours.FAIL + "www.ultimateamiga.co.uk" + text_utils.FontColours.ENDC)
 print()
 
-
+# =======================================
+# command-line stuff | not needed now
+# =======================================
 parser = argparse.ArgumentParser(description='Create Amiberry XML for WHDLoad Packs.')
 
 parser.add_argument('--scandir', '-s',                         # command line argument
@@ -115,16 +134,70 @@ if platform.system() == "Darwin" and args.forceinput != True:
 else:
         input_directory = args.scandir
 
-#input_directory = args.scandir
+# =======================================
+# Get recently updated packages from FTP
+# =======================================
+input_directory = '/tmp' # Directory where packages will be downloaded to
+ftphost = ''
+ftplogin = 'ftp'
+ftppass = ''
+ftpcon = ftputil.FTPHost(ftphost,ftplogin,ftppass)
+ftproot = '/Commodore_Amiga/Retroplay/'
+ftpdemo = 'Commodore_Amiga_-_WHDLoad_-_Demos/'
+ftpgames = 'Commodore_Amiga_-_WHDLoad_-_Games/'
+gamelist = []
+whdbfile = 'whdload_db.xml'
+whdbtmp = 'whdload_db.tmp'
+whdbbak = 'whdload_db.xml.bak'
+
+# filename pattern for what the script is looking for
+fpattern = '.lha'
 
 # Timecheck the original XML
+whdbtime = datetime.datetime.fromtimestamp(os.path.getmtime(whdbfile)).date()
+curdate = datetime.date.today()
 
-#text_file = open("whdload_db.xml", "r")
-#XML_OLD = text_file.read()
-#text_file.close()
+# get the nb of days since last update of whdbfile
+getdelta = (curdate - whdbtime).days
 
+# UTC time minus 'getdelta' in seconds 
+# any files created/modified since then will have to be processed
+utc_datetime_delta = datetime.datetime.utcnow()-datetime.timedelta(days=getdelta)
 
-      
+# also get whdbfile size before modification
+whdsize = Path(whdbfile).stat().st_size
+
+# logging into FTP and get a list of recently modified files
+with ftpcon as host: 
+    ftpcon.use_list_a_option = 'False'
+    recursive = host.walk(ftproot,topdown=True,onerror=None)
+    for root,dirs,files in recursive:
+        if root.find(ftpdemo) > 0 or root.find(ftpgames) > 0: # ugly as f*ck
+          for name in files:
+            fpath = host.path.join(root, name)
+            fext = Path(fpath).suffix # get file extension
+            get_mtime = host.stat(fpath).st_mtime 
+            file_mtime = datetime.datetime.utcfromtimestamp(get_mtime)
+            if file_mtime >= utc_datetime_delta and fext == fpattern: 
+              if fpath not in gamelist:
+                gamelist.append(fpath)
+
+host.close()
+
+for item in gamelist:
+    try:         
+      print("retrieving file:", os.path.basename(item) + " to " + input_directory)  
+      urllib.request.urlretrieve('ftp://'+ftplogin+':'+ftppass+'@'+ftphost+item, input_directory + "/" + os.path.basename(item))
+    except:
+      print("WARNING: File could not be downloaded")
+
+# =======================================
+# Backup before doing naughty stuff!!
+# =======================================
+if not os.path.isfile(whdbbak) or whdsize >= os.stat(whdbbak).st_size:
+    shutil.copy2(whdbfile, whdbbak)
+    whdbaksize = Path(whdbbak).stat().st_size
+
 # >> Setup Bool Constant for xml refresh
 FULL_REFRESH  = args.refresh
 
@@ -136,7 +209,7 @@ XML_HEADER = XML_HEADER + '<whdbooter timestamp="' + datetime.datetime.now().str
 XML_OLD = ""
 
 if FULL_REFRESH == False:    
-    text_file = open("whdload_db.xml", "r")
+    text_file = open(whdbfile, "r")
     XML_OLD = text_file.read()
     text_file.close()
 
@@ -158,8 +231,6 @@ COMPLETE_MSG = 'Scanned file log: ' + datetime.datetime.now().strftime("%Y-%m-%d
 
 
 
-
-
 for file2 in Path(input_directory + "/").glob('**/*.lha'):
     archive_path = str(file2)
     this_file = os.path.basename(archive_path)
@@ -178,9 +249,6 @@ for file2 in Path(input_directory + "/").glob('**/*.lha'):
         try:
                 slave_archive = LhaSlaveArchive(archive_path, hash_algorithm)
                 file_details = openretroid.parse_file(archive_path)
-                
-                #print(text_utils.FontColours.OKGREEN + slave_archive.absolute_path + text_utils.FontColours.ENDC)
-
                 
                 slave_archive.read_lha()
                 ArchiveSHA = sha1(file2)
@@ -682,11 +750,28 @@ for file2 in Path(input_directory + "/").glob('**/*.lha'):
 
 XML = XML_HEADER + XML_OLD + XML + XML_FOOTER
 
-#print(XML)
+# =======================================
+# print XML and other files
+# =======================================
 print("Generating XML File")
-text_file = open("whdload_db.xml", "w+")
+text_file = open(whdbtmp, "w+")
 text_file.write(XML)
 text_file.close()
+
+# Sorting elements / not required but easier to debug
+print("Sorting XML File")
+
+tree = etree.parse(whdbtmp)
+parent = tree.getroot()
+sortchildrenby(parent, 'filename')
+tree.write(whdbfile)
+
+# Validating XML well-formedness
+try:
+    parsefile(whdbfile)
+    print('XML valid')
+except:
+    print('XML NOT valid.')
 
 text_file = open("files_scanned.txt", "w+")
 text_file.write(COMPLETE_MSG)
@@ -696,3 +781,25 @@ text_file.close()
 text_file = open("files_failed.txt", "w+")
 text_file.write(ERROR_MSG)
 text_file.close()
+
+# =======================================
+# Cleaning
+# =======================================
+# Remove any .lha that have been processed
+for lhaclean in os.listdir(input_directory):
+    if lhaclean.endswith(".lha"):
+        os.remove(os.path.join(input_directory, lhaclean))
+
+# Remove the tmp whdload_db.xml
+os.remove(whdbtmp)
+
+# Note: could use md5 hash instead
+# get whdbfile size after modification
+whdsize_after = Path(whdbfile).stat().st_size
+
+if whdsize_after > 0:
+    os.remove(whdbbak)
+
+# =======================================
+print('Bye!')
+print()
