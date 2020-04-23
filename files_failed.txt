@@ -1,3 +1,1 @@
-Problem file log: 2020-02-07 at 03:00:04
-Could not read LHA archive: 100MostRememberedGamesOnThe64_v1.01_PerhkanSundell&RonBirk.lha
-Could not read LHA archive: 100MostRememberedGamesOnThe64_v1.01_Perh�kanSundell&RonBirk.lha
+Problem file log: 2020-04-23 at 02:38:39
