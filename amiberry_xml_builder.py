@@ -106,6 +106,7 @@ print()
 # =======================================
 # command-line stuff | not needed now
 # =======================================
+"""
 parser = argparse.ArgumentParser(description='Create Amiberry XML for WHDLoad Packs.')
 
 parser.add_argument('--scandir', '-s',                         # command line argument
@@ -133,7 +134,7 @@ if platform.system() == "Darwin" and args.forceinput != True:
         input_directory = "/Volumes/Macintosh HD/Users/horaceandthespider/Google Drive/Geek/Shared Pi Games/amiga/_Standard/"
 else:
         input_directory = args.scandir
-
+"""
 # =======================================
 # Get recently updated packages from FTP
 # =======================================
@@ -198,8 +199,9 @@ if not os.path.isfile(whdbbak) or whdsize >= os.stat(whdbbak).st_size:
     shutil.copy2(whdbfile, whdbbak)
     whdbaksize = Path(whdbbak).stat().st_size
 
-# >> Setup Bool Constant for xml refresh
-FULL_REFRESH  = args.refresh
+# Setup Bool Constant for XML refresh / default to False
+#FULL_REFRESH  = args.refresh
+FULL_REFRESH  = 'False'
 
 hash_algorithm = 'SHA1'
 count = 1
