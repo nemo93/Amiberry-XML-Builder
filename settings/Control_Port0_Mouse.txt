@@ -211,8 +211,9 @@ Ishar2
 Ishar2AGA
 Ishar3
 Ishar3AGA
+Ishar3Fr
+Ishar3De
 IsharAGA
-ItCameFromTheDesert
 ItCameFromTheDesert2
 JamesBondTheStealthAffair
 Jetstrike
@@ -236,7 +237,6 @@ Knightmare
 KnightsOfTheSky
 Kult
 Lancelot
-LaserSquad
 LeadingLapMPV
 LeadingLapMPVAGA
 LegendMindscape

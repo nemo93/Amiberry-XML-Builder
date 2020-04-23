@@ -80,6 +80,7 @@ CelticLegends
 Centurion
 ChamberSciMutantPriestess
 ChampionsOfKrynn
+ChaosEngineAGA
 ChaosStrikesBack&EnUtil
 ChaseHQ
 ChaseHQ2
@@ -135,6 +136,7 @@ DuckTales
 Dune
 Dune2
 DungeonMaster
+DungeonMaster2AGA
 DungeonQuest
 EOB1
 EOB1
@@ -158,6 +160,7 @@ F29Retaliator
 FA18Interceptor
 FIFAInternationalSoccer
 FateGatesOfDawn
+Fire&Forget2
 FlightOfTheAmazonQueen
 Flipit&Magnose
 Flood
@@ -219,11 +222,13 @@ Interphase
 InterphaseAmigaFormat
 IntoTheEaglesNest
 Ishar
+IsharAGA
 Ishar2
 Ishar2AGA
 Ishar3
 Ishar3AGA
-IsharAGA
+Ishar3De
+Ishar3Fr
 ItCameFromTheDesert
 ItCameFromTheDesert2
 JamesBondTheStealthAffair
@@ -237,6 +242,7 @@ KGB
 KarateKid2
 KeefTheThief
 KillingCloud
+KillingGameShow
 KingOfChicago
 KingsQuest
 KingsQuest2

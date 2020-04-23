@@ -19,7 +19,6 @@ Cedric
 CedricCD32Fast
 ChaosEngine2
 ChaosEngine2AGA
-Deliverance
 DeluxePacman
 DeluxePacmanAGA
 Elfmania

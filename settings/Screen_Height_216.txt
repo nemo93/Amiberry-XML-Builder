@@ -33,7 +33,6 @@ DoubleDragon
 DragonsLairEscape
 DreamWeb
 DreamWebAGA
-DungeonMaster2AGA
 DynaBlaster
 ElfOcean
 Elvira
@@ -64,6 +63,7 @@ LegendOfTheSword
 Lemmings
 LemmingsFiles
 LethalWeapon
+Lionheart
 Lollypop
 LordsOfTheRisingSun
 LordsOfWar

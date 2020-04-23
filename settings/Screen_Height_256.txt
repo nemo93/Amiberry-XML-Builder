@@ -23,10 +23,10 @@ Benefactor
 BenefactorCD32
 BombPacCD32
 BombPacCD32AGA
+CaptainPlanet&Planeteers
 CardiaxxTeam17
 Carnage
 ChaosEngine
-ChaosEngineAGA
 ChaosEngineCD32
 CharlieJCool
 CharlieJCoolAGA
@@ -41,6 +41,7 @@ Coloris
 Commando
 CrystalKingdomDizzy
 Cytron
+Deliverance
 DimosQuest
 DonkTheSamuraiDuck
 DonkTheSamuraiDuckAGA
@@ -72,7 +73,6 @@ JewelsOfDarkness
 KickOff3
 KickOff3EC
 KickOff96
-KidChaos
 LeadingLapMPV
 LeadingLapMPVAGA
 LethalXcess

@@ -14,7 +14,6 @@ HumansCD32
 Hybris
 JupitersMasterdrive
 JurassicPark
-KidChaos
 Necronom
 RuffNTumble
 RType2
