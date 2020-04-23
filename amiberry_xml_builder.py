@@ -804,9 +804,8 @@ os.remove(whdbtmp)
 # get whdbfile size after modification
 whdsize_after = Path(whdbfile).stat().st_size
 
-if whdsize_after > 0:
+if whdsize_after > 0 and whdsize_after >= whdsize:
     os.remove(whdbbak)
 
 # =======================================
 print('Bye!')
-print()
