@@ -765,6 +765,21 @@ text_file = open(whdbtmp, "w+")
 text_file.write(XML)
 text_file.close()
 
+######
+# Should be removed at some point
+# Ensure there's no more offsetX/Y related lines
+offtext = ['SCREEN_X_OFFSET=', 'SCREEN_Y_OFFSET=']
+
+with open(whdbtmp, 'r') as nomoreoffset:
+    olines = nomoreoffset.readlines()
+
+with open(whdbtmp, 'w') as nomoreoffset:
+    for line in olines:
+        if not any(offset in line for offset in offtext):
+            nomoreoffset.write(line)
+#
+######
+
 # Sorting elements / not required but easier to debug
 print("Sorting XML File")
 
