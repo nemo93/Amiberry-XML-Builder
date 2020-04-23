@@ -201,13 +201,14 @@ if not os.path.isfile(whdbbak) or whdsize >= os.stat(whdbbak).st_size:
 
 # Setup Bool Constant for XML refresh / default to False
 #FULL_REFRESH  = args.refresh
-FULL_REFRESH  = 'False'
+FULL_REFRESH  = False
 
 hash_algorithm = 'SHA1'
 count = 1
 
-XML_HEADER= '<?xml version="1.0" encoding="UTF-8"?>' + chr(10)
-XML_HEADER = XML_HEADER + '<whdbooter timestamp="' + datetime.datetime.now().strftime("%Y-%m-%d at %H:%M:%S") + '">' + chr(10)
+#XML_HEADER= '<?xml version="1.0" encoding="UTF-8"?>' + chr(10)
+#XML_HEADER = XML_HEADER + '<whdbooter timestamp="' + datetime.datetime.now().strftime("%Y-%m-%d at %H:%M:%S") + '">' + chr(10)
+XML_HEADER = '<whdbooter timestamp="' + datetime.datetime.now().strftime("%Y-%m-%d at %H:%M:%S") + '">' + chr(10)
 XML_OLD = ""
 
 if FULL_REFRESH == False:    
@@ -225,8 +226,10 @@ if FULL_REFRESH == False:
     XML_OLD = XML_OLD[b+2:c]
     # print(XML_OLD)
     
-XML = ""
-XML_FOOTER = "</whdbooter>" + chr(10)
+#XML = ''
+#XML_FOOTER = "</whdbooter>" + chr(10)
+XML = ''
+XML_FOOTER = '</whdbooter>'
 
 ERROR_MSG    = 'Problem file log: ' + datetime.datetime.now().strftime("%Y-%m-%d at %H:%M:%S") + '' + chr(10)
 COMPLETE_MSG = 'Scanned file log: ' + datetime.datetime.now().strftime("%Y-%m-%d at %H:%M:%S") + '' + chr(10)
@@ -720,11 +723,13 @@ for file2 in Path(input_directory + "/").glob('**/*.lha'):
                 XML = XML + SLAVE_XML
                 XML = XML + chr(9)  + chr(9) + '<hardware>'
                 XML = XML + chr(10) + chr(9) + chr(9) + hardware.replace(chr(10), chr(10) + chr(9) + chr(9) )
-                XML = XML + chr(10) + chr(9) + chr(9) + '</hardware>' + chr(10)
+#                XML = XML + chr(10) + chr(9) + chr(9) + '</hardware>' + chr(10)
+                XML = XML + '</hardware>' + chr(10)
 
 
                 if len(custom_text)>0:
-                    XML = XML + chr(9)+ chr(9) + '<custom_controls>' + chr(10) + custom_text  + chr(10) + chr(9) + chr(9) + '</custom_controls>' + chr(10)
+#                    XML = XML + chr(9)+ chr(9) + '<custom_controls>' + chr(10) + custom_text  + chr(10) + chr(9) + chr(9) + '</custom_controls>' + chr(10)
+                    XML = XML + chr(9)+ chr(9) + '<custom_controls>' + chr(10) + chr(9) + chr(9) + custom_text  + chr(10) + chr(9) + chr(9) + '</custom_controls>' + chr(10)
                 
                 XML = XML + chr(9)+ '</game>' + chr(10)
 
