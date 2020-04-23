@@ -13,7 +13,6 @@ ArcadePoolCD32
 ArcadeSnookerAGA
 BarbarianPalace
 BartVsTheWorld
-BodyBlowsAGA
 BodyBlowsGalacticAGA
 BrutalFootball
 BrutalFootballAGA

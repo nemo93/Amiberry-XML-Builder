@@ -2,7 +2,6 @@
 BlackViperAGA
 BlackViperCD32
 BloodnetAGA
-BodyBlowsAGA
 BodyBlowsGalacticAGA
 CapitalPunishmentAGA
 CapitalPunishmentAGACD
@@ -19,6 +18,6 @@ FearsCD32
 IsharAGA
 Ishar2AGA
 Ishar3AGA
+Nicky2
 UFOEnemyUnknownAGA
 UFOEnemyUnknownCD32
-Nicky2

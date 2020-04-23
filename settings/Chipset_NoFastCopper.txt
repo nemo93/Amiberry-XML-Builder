@@ -1,8 +1,11 @@
+Agony
 BattleSquadron
 Darius+
 DisposableHero
 DisposableHeroFast
 EmpireSoccer94
+Fire&Ice
+FireAndIce
 Heimdall
 HollywoodPokerPro
 Hostages
