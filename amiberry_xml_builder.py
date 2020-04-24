@@ -191,6 +191,7 @@ for item in gamelist:
       urllib.request.urlretrieve('ftp://'+ftplogin+':'+ftppass+'@'+ftphost+item, input_directory + "/" + os.path.basename(item))
     except:
       print("WARNING: File could not be downloaded")
+      sys.exit(1)
 
 # =======================================
 # Backup before doing naughty stuff!!
@@ -727,7 +728,7 @@ for file2 in Path(input_directory + "/").glob('**/*.lha'):
 
 
                 if len(custom_text)>0:
-                  XML = XML + chr(9)+ chr(9) + '<custom_controls>' + chr(10) + chr(9) + chr(9) + chr(9) + custom_text + chr(10) + chr(9) + chr(9) + '</custom_controls>' + chr(10)
+                  XML = XML + chr(9) + chr(9) + '<custom_controls>' + chr(10) + chr(9) + chr(9) + chr(9) + custom_text + chr(10) + chr(9) + chr(9) + '</custom_controls>' + chr(10)
                 
                 XML = XML + chr(9) + '</game>' + chr(10)
 
