@@ -140,7 +140,7 @@ else:
 # =======================================
 input_directory = '/tmp' # Directory where packages will be downloaded to
 ftphost = ''
-ftplogin = 'ftp'
+ftplogin = ''
 ftppass = ''
 ftpcon = ftputil.FTPHost(ftphost,ftplogin,ftppass)
 ftproot = ''
@@ -713,24 +713,23 @@ for file2 in Path(input_directory + "/").glob('**/*.lha'):
                 ##generate XML
                 
                 
-                XML = XML + chr(9)+ '<game filename="' + text_utils.left(this_file,len(this_file) - 4).replace("&", "&amp;") + '"  sha1="' + ArchiveSHA + '">' + chr(10)
-                XML = XML + chr(9)+ chr(9) + '<name>' + full_game_name.replace("&", "&amp;") + '</name>' + chr(10)
-                XML = XML + chr(9)+ chr(9) + '<subpath>' + sub_path.replace("&", "&amp;") + '</subpath>' + chr(10)
-                XML = XML + chr(9)+ chr(9) + '<variant_uuid>' + UUID + '</variant_uuid>' + chr(10)
-                XML = XML + chr(9)+ chr(9) + '<slave_count>' + str(len(slave_archive.slaves)) + '</slave_count>' + chr(10)
-                XML = XML + chr(9)+ chr(9) + '<slave_default>' + default_slave.replace("&", "&amp;")  + '</slave_default>' + chr(10)
-                XML = XML + chr(9)+ chr(9) + '<slave_libraries>' + extra_libs  + '</slave_libraries>' + chr(10)
+                XML = XML + chr(9) + '<game filename="' + text_utils.left(this_file,len(this_file) - 4).replace("&", "&amp;") + '"  sha1="' + ArchiveSHA + '">' + chr(10)
+                XML = XML + chr(9) + chr(9) + '<name>' + full_game_name.replace("&", "&amp;") + '</name>' + chr(10)
+                XML = XML + chr(9) + chr(9) + '<subpath>' + sub_path.replace("&", "&amp;") + '</subpath>' + chr(10)
+                XML = XML + chr(9) + chr(9) + '<variant_uuid>' + UUID + '</variant_uuid>' + chr(10)
+                XML = XML + chr(9) + chr(9) + '<slave_count>' + str(len(slave_archive.slaves)) + '</slave_count>' + chr(10)
+                XML = XML + chr(9) + chr(9) + '<slave_default>' + default_slave.replace("&", "&amp;")  + '</slave_default>' + chr(10)
+                XML = XML + chr(9) + chr(9) + '<slave_libraries>' + extra_libs  + '</slave_libraries>' + chr(10)
                 XML = XML + SLAVE_XML
-                XML = XML + chr(9)  + chr(9) + '<hardware>'
-                XML = XML + chr(10) + chr(9) + chr(9) + hardware.replace(chr(10), chr(10) + chr(9) + chr(9) )
+                XML = XML + chr(9) + chr(9) + '<hardware>'
+                XML = XML + chr(10) + chr(9) + chr(9) + chr(9) + hardware.replace(chr(10), chr(10) + chr(9) + chr(9) )
                 XML = XML + chr(10) + chr(9) + chr(9) + '</hardware>' + chr(10)
 
 
                 if len(custom_text)>0:
-#                    XML = XML + chr(9)+ chr(9) + '<custom_controls>' + chr(10) + custom_text  + chr(10) + chr(9) + chr(9) + '</custom_controls>' + chr(10)
-                    XML = XML + chr(9)+ chr(9) + '<custom_controls>' + chr(10) + chr(9) + chr(9) + custom_text  + chr(10) + chr(9) + chr(9) + '</custom_controls>' + chr(10)
+                  XML = XML + chr(9)+ chr(9) + '<custom_controls>' + chr(10) + chr(9) + chr(9) + chr(9) + custom_text + chr(10) + chr(9) + chr(9) + '</custom_controls>' + chr(10)
                 
-                XML = XML + chr(9)+ '</game>' + chr(10)
+                XML = XML + chr(9) + '</game>' + chr(10)
 
         except FileNotFoundError:
                 print("Could not find LHA archive: {}".format(archive_path))
