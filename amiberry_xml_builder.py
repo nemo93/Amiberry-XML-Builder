@@ -723,12 +723,12 @@ for file2 in Path(input_directory + "/").glob('**/*.lha'):
                 XML = XML + chr(9) + chr(9) + '<slave_libraries>' + extra_libs  + '</slave_libraries>' + chr(10)
                 XML = XML + SLAVE_XML
                 XML = XML + chr(9) + chr(9) + '<hardware>'
-                XML = XML + chr(10) + chr(9) + chr(9) + chr(9) + hardware.replace(chr(10), chr(10) + chr(9) + chr(9) )
+                XML = XML + chr(10) + chr(9) + chr(9) + hardware.replace(chr(10), chr(10) + chr(9) + chr(9) )
                 XML = XML + chr(10) + chr(9) + chr(9) + '</hardware>' + chr(10)
 
 
                 if len(custom_text)>0:
-                  XML = XML + chr(9) + chr(9) + '<custom_controls>' + chr(10) + chr(9) + chr(9) + chr(9) + custom_text + chr(10) + chr(9) + chr(9) + '</custom_controls>' + chr(10)
+                  XML = XML + chr(9) + chr(9) + '<custom_controls>' + chr(10) + chr(9) + chr(9) + custom_text + chr(10) + chr(9) + chr(9) + '</custom_controls>' + chr(10)
                 
                 XML = XML + chr(9) + '</game>' + chr(10)
 
