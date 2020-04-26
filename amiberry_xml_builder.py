@@ -785,7 +785,7 @@ print("Sorting XML File")
 tree = etree.parse(whdbtmp)
 parent = tree.getroot()
 sortchildrenby(parent, 'filename')
-tree.write(whdbfile)
+tree.write(whdbfile, encoding='utf-8', xml_declaration=True)
 
 # Validating XML well-formedness
 try:
