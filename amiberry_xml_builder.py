@@ -17,7 +17,6 @@ import ftputil
 import urllib.request
 import shutil
 from lxml import etree
-import xml.parsers.expat
 
 # =======================================
 # Methods
@@ -84,11 +83,6 @@ def check_list(in_file, game_name):
 # For XML sorting
 def sortchildrenby(parent, attr):
     parent[:] = sorted(parent, key=lambda child: child.get(attr))
-
-# For XML validation
-def parsefile(file):
-    parser = xml.parsers.expat.ParserCreate()
-    parser.Parse(file)
 
 
 # =======================================
@@ -404,10 +398,6 @@ for file2 in Path(input_directory + "/").glob('**/*.lha'):
 
                 # '======== DISPLAY SETTINGS =======
                 # ' ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-                # ' screen Y/X Offsets
-
-             #   screen_offset_y = value_list("Screen_OffsetY.txt", sub_path)
-             #   screen_offset_x = value_list("Screen_OffsetX.txt", sub_path)
 
                 # ' screen heights { 200, 216, 240, 256, 262, 270 };
                 HW_HEIGHT = ""
@@ -441,6 +431,15 @@ for file2 in Path(input_directory + "/").glob('**/*.lha'):
                 if check_list("Screen_Width_768.txt", sub_path) is True:
                                 HW_WIDTH = "768"
                                 
+                # ' screen centering (recently added)
+                HW_H_CENTER = 'SMART'
+                if check_list('Screen_Center_H.txt', sub_path) is True:
+                  HW_H_CENTER = 'NONE'
+
+                HW_V_CENTER = 'SMART'
+                if check_list('Screen_Center_V.txt', sub_path) is True:
+                  HW_V_CENTER = 'NONE'
+
                 # ' extras
                 HW_NTSC = ""
                 if check_list("Screen_ForceNTSC.txt", sub_path) is True:
@@ -609,15 +608,46 @@ for file2 in Path(input_directory + "/").glob('**/*.lha'):
                         use_cd32_pad = True
 
 
-
                 # ================================
                 # building the hardware section
+                if HW_BLITS != "":
+                    hardware += ("BLITTER=") + HW_BLITS + chr(10)
+
+                if HW_SPEED != "":
+                    hardware += ("CLOCK=") + HW_SPEED + chr(10)
+
+                if chip_ram != 2:
+                    hardware += ("CHIP_RAM=") + str(chip_ram) + chr(10)
+
+                if HW_CHIPSET != "":
+                    hardware += ("CHIPSET=") + HW_CHIPSET + chr(10)
+                    
+                if HW_CPU != "":
+                    hardware += ("CPU=") + HW_CPU + chr(10)
+                
+                if HW_24BIT != "":
+                    hardware += ("CPU_24BITADDRESSING=") + HW_24BIT + chr(10)
+
+                if HW_CPUCOMP != "":
+                    hardware += ("CPU_COMPATIBLE=") + HW_CPUCOMP + chr(10)
+
+                if HW_FASTCOPPER != "":
+                    hardware += ("FAST_COPPER=") + HW_FASTCOPPER + chr(10)
+
+                if fast_ram != 4:
+                    hardware += ("FAST_RAM=") + str(fast_ram) + chr(10)
+
+                if HW_JIT != "":
+                    hardware += ("JIT=") + HW_JIT + chr(10)
+
+                if HW_NTSC != "":
+                    hardware += ("NTSC=") + HW_NTSC + chr(10)
+
                 if use_mouse1 == True:
                     hardware += ("PRIMARY_CONTROL=MOUSE") + chr(10)
                 else:
                     hardware += ("PRIMARY_CONTROL=JOYSTICK")  + chr(10)       
 
-                # building the hardware section
                 if use_mouse1 == True:
                     hardware += ("PORT0=MOUSE") + chr(10)
                 elif use_cd32_pad == True:
@@ -632,62 +662,24 @@ for file2 in Path(input_directory + "/").glob('**/*.lha'):
                 else:
                     hardware += ("PORT1=JOY")  + chr(10)      
 
-             #   hardware += ("PRIMARY_CONTROL=MOUSE") + chr(10)
-
-                if HW_FASTCOPPER != "":
-                    hardware += ("FAST_COPPER=") + HW_FASTCOPPER + chr(10)
-
-                if HW_BLITS != "":
-                    hardware += ("BLITTER=") + HW_BLITS + chr(10)
-
-                if HW_SPRITES != "":
-                    hardware += ("SPRITES=") + HW_CPU + chr(10)
-                    
-                if HW_24BIT != "":
-                    hardware += ("CPU_24BITADDRESSING=") + HW_24BIT + chr(10)
-
-                if HW_CPUCOMP != "":
-                    hardware += ("CPU_COMPATIBLE=") + HW_CPUCOMP + chr(10)
-
-                if HW_CPU != "":
-                    hardware += ("CPU=") + HW_CPU + chr(10)
-                
-                if HW_JIT != "":
-                    hardware += ("JIT=") + HW_JIT + chr(10)
-
-                if HW_SPEED != "":
-                    hardware += ("CLOCK=") + HW_SPEED + chr(10)
-
-                if HW_CHIPSET != "":
-                    hardware += ("CHIPSET=") + HW_CHIPSET + chr(10)
-                    
-                if HW_NTSC != "":
-                    hardware += ("NTSC=") + HW_NTSC + chr(10)
-
                 # SCREEN OPTIONS
+                if HW_H_CENTER != '':
+                    hardware += ('SCREEN_CENTERH=') + HW_H_CENTER + chr(10)
+
+                if HW_V_CENTER != '':
+                    hardware += ('SCREEN_CENTERV=') + HW_V_CENTER + chr(10)
+
                 if HW_HEIGHT != "":
                     hardware += ("SCREEN_HEIGHT=") + HW_HEIGHT + chr(10)
 
                 if HW_WIDTH != "":
                     hardware += ("SCREEN_WIDTH") + HW_WIDTH + chr(10)
 
-#                if screen_offset_y != 0:
-#                    hardware += ("SCREEN_Y_OFFSET=") + str(screen_offset_y) + chr(10)
-
-
-
-
-                # MEMORY OPTIONS
-
-                if chip_ram != 2:
-                    hardware += ("CHIP_RAM=") + str(chip_ram) + chr(10)
-
-                if fast_ram != 4:
-                    hardware += ("FAST_RAM=") + str(fast_ram) + chr(10)
-
+                if HW_SPRITES != "":
+                    hardware += ("SPRITES=") + HW_CPU + chr(10)
+                    
                 if z3_ram != 0:
                     hardware += ("Z3_RAM=") + str(z3_ram) + chr(10)
-
                     
                 # custom controls
                 custom_file = "customcontrols/" + full_game_name + ".controls"
@@ -705,14 +697,12 @@ for file2 in Path(input_directory + "/").glob('**/*.lha'):
                             custom_text += this_line
 
 
-                # 
                 extra_libs = "False"
                 if check_list("WHD_Libraries.txt", sub_path) is True:
                     extra_libs = "True"
 
                 COMPLETE_MSG = COMPLETE_MSG + "Scanned: " + full_game_name + chr(10)
-                ##generate XML
-                
+                ## generate XML
                 
                 XML = XML + chr(9) + '<game filename="' + text_utils.left(this_file,len(this_file) - 4).replace("&", "&amp;") + '"  sha1="' + ArchiveSHA + '">' + chr(10)
                 XML = XML + chr(9) + chr(9) + '<name>' + full_game_name.replace("&", "&amp;") + '</name>' + chr(10)
@@ -786,13 +776,6 @@ tree = etree.parse(whdbtmp)
 parent = tree.getroot()
 sortchildrenby(parent, 'filename')
 tree.write(whdbfile, encoding='utf-8', xml_declaration=True)
-
-# Validating XML well-formedness
-try:
-    parsefile(whdbfile)
-    print('XML valid')
-except:
-    print('XML NOT valid.')
 
 text_file = open("files_scanned.txt", "w+")
 text_file.write(COMPLETE_MSG)
