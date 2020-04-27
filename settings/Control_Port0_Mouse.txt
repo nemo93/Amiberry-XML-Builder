@@ -127,8 +127,14 @@ DragonsLairEscapeFast
 Dragonstone
 DragonstoneCD32
 DreamWeb
+DreamWebDe
 DreamWebAGA
+DreamWebAGADe
 Dune
+DuneDe
+DuneEs
+DuneFr
+DuneIt
 Dune2
 DungeonMaster
 DungeonMaster2
@@ -169,6 +175,10 @@ GloomAGA
 GloomCD32
 Gobliiins
 Gobliins2
+Gobliins2De
+Gobliins2Es
+Gobliins2Fr
+Gobliins2It
 Goblins3
 GoldRush
 Gunship
@@ -179,6 +189,8 @@ HardBall
 HardBall2
 HeartOfChina
 Heimdall
+HeimdallDe
+HeimdallFr
 Heimdall2
 HeroQuest
 HeroQuest&ReturnWitchLord
@@ -189,6 +201,7 @@ HighSeasTraderAGA
 Hillsfar
 Hilt
 Hilt2
+HiredGuns1MB
 Historyline
 HolidayLemmings1993
 HolidayLemmings1994
@@ -198,7 +211,6 @@ Humans3
 Humans3AGA
 HuntForRedOctober
 Hunter
-Immortal
 Impact
 Imperium
 IndianaJonesAtlantisAdv
@@ -223,6 +235,8 @@ JohnMaddenFootball
 Journey
 K240
 KGB
+KGBDe
+KGBFr
 KeefTheThief
 KillingCloud
 KingOfChicago

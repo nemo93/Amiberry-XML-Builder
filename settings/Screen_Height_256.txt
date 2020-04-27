@@ -70,6 +70,7 @@ Humans3AGA
 Hybris
 Jetstrike
 JewelsOfDarkness
+KickOff
 KickOff3
 KickOff3EC
 KickOff96

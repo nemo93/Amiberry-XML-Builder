@@ -24,7 +24,6 @@ DeluxePacmanAGA
 Elfmania
 FearsAGA
 FearsCD32
-KickOff
 Kingpin
 Kingpin1Mb
 Llamatron1MB

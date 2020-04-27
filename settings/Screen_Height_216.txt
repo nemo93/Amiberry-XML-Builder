@@ -31,8 +31,6 @@ DGeneration
 DeepCore
 DoubleDragon
 DragonsLairEscape
-DreamWeb
-DreamWebAGA
 DynaBlaster
 ElfOcean
 Elvira
@@ -44,6 +42,8 @@ EscapeFromColditz
 FantasyWorldDizzy
 Fire&Ice
 Fire&IceCD32
+FireAndIce
+FireAndIceCD32
 Frontier
 FrontierCD32
 FuryOfTheFurries
@@ -52,7 +52,9 @@ GemStoneLegend
 GreatGianaSisters
 HATE
 Harlequin1MB
-Heimdall
+HiredGuns1MB
+JaguarXJ220Files
+JaguarXJ220Image
 JamesPond2
 JungleStrike
 JungleStrikeCD32

@@ -1,4 +1,3 @@
-AkiraCD32
 BeneathASteelSky
 DungeonMaster
 DungeonMaster2AGA
@@ -8,4 +7,3 @@ MonkeyIsland2
 RiseOfTheRobots
 WormsDCAGA8MB
 WormsDCAGA12MB
-XP8AGA

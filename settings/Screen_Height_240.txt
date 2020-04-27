@@ -50,11 +50,16 @@ GhoulsNGhosts
 Globdule
 Gods
 Heimdall2
-HudsonHawk
 IndyHeat
 ItCameFromTheDesert
+JamesPond3AGA
+JamesPond3CD32
 K240
 KickOff2
+KickOff2De
+KickOff2Es
+KickOff2Fr
+KickOff2It
 KidChaos
 Lancelot
 Lemmings2

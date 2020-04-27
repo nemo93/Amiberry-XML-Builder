@@ -130,6 +130,8 @@ FinalFight
 FinalFight1MB
 Fire&Ice
 Fire&IceCD32
+FireAndIce
+FireAndIceCD32
 FireForce
 FireForceCD32
 FirstSamurai
@@ -161,6 +163,8 @@ HardNHeavy
 Harlequin
 Harlequin1MB
 Heimdall
+HeimdallDe
+HeimdallFr
 Heimdall2
 Hook
 Hostages
@@ -189,10 +193,16 @@ JungleStrike2MB
 JupitersMasterdrive
 JurassicPark
 JurassicParkAGA
-KGB
 KarateKid2
+KGB
+KGBDe
+KGBFr
 KickOff
 KickOff2
+KickOff2De
+KickOff2Es
+KickOff2Fr
+KickOff2It
 KickOff3
 KickOff3EC
 KickOff96

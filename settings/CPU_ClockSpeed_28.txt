@@ -12,6 +12,7 @@ CivilizationAGA
 CivilizationAGACD
 ColonizationAGA
 DreamWebAGA
+DreamWebAGADe
 DungeonMaster2AGA
 FearsAGA
 FearsCD32
