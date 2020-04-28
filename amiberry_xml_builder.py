@@ -468,7 +468,7 @@ for file2 in Path(input_directory + "/").glob('**/*.lha'):
                
                 
                 old_chip_ram = chip_ram
-                for i in range(0, 4):
+                for i in range(0, 4): # No more than 8MB
                     chip_ram = int(math.pow(2, i)) / 2
                     if chip_ram >= 1:
                                     chip_ram = int(chip_ram)
@@ -485,7 +485,7 @@ for file2 in Path(input_directory + "/").glob('**/*.lha'):
                 # ' when we want different fast ram!!
 
                 old_fast_ram = fast_ram
-                for i in range(0, 4):
+                for i in range(0, 5): # No more than 16MB
                     fast_ram = int(math.pow(2, i))
                     if check_list("Memory_FastRam_" + str(fast_ram) + ".txt", sub_path) is True:
                         break
@@ -497,7 +497,7 @@ for file2 in Path(input_directory + "/").glob('**/*.lha'):
                 # ' ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
                 # ' when we want different Z3 ram!!
 
-                for i in range(0, 8):
+                for i in range(0, 8): # No more than 128MB
                     z3_ram = int(math.pow(2, i))
                     if check_list("Memory_Z3Ram_" + str(z3_ram) + ".txt", sub_path) is True:
                         break
@@ -673,7 +673,7 @@ for file2 in Path(input_directory + "/").glob('**/*.lha'):
                     hardware += ("SCREEN_HEIGHT=") + HW_HEIGHT + chr(10)
 
                 if HW_WIDTH != "":
-                    hardware += ("SCREEN_WIDTH") + HW_WIDTH + chr(10)
+                    hardware += ("SCREEN_WIDTH=") + HW_WIDTH + chr(10)
 
                 if HW_SPRITES != "":
                     hardware += ("SPRITES=") + HW_CPU + chr(10)
