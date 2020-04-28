@@ -395,7 +395,7 @@ for item in root.findall('game'):
       hardware += ('SCREEN_HEIGHT=') + HW_HEIGHT + chr(10)
 
     if HW_WIDTH != '':
-      hardware += ('SCREEN_WIDTH') + HW_WIDTH + chr(10)
+      hardware += ('SCREEN_WIDTH=') + HW_WIDTH + chr(10)
 
     if HW_SPRITES != '':
       hardware += ('SPRITES=') + HW_CPU + chr(10)
