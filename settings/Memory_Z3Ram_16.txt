@@ -1,9 +1,6 @@
 BeneathASteelSky
 DungeonMaster
-DungeonMaster2AGA
 Fire&Forget2
 FlightOfTheAmazonQueen
 MonkeyIsland2
 RiseOfTheRobots
-WormsDCAGA8MB
-WormsDCAGA12MB
