@@ -227,8 +227,8 @@ for item in root.findall('game'):
       else:
         z3_ram = 0
 
-    if z3_ram != 0 or fast_ram >= 8:
-      print(sub_path,'-> Z3:',z3_ram,'Fast:',fast_ram,'Chip:',chip_ram)
+#    if z3_ram != 0 or fast_ram >= 8:
+#      print(sub_path,'-> Z3:',z3_ram,'Fast:',fast_ram,'Chip:',chip_ram)
 
     # '======== CHIPSET SETTINGS =======
     # ' ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
