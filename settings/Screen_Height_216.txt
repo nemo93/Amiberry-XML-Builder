@@ -55,6 +55,8 @@ Harlequin1MB
 HiredGuns1MB
 JaguarXJ220Files
 JaguarXJ220Image
+JaguarXJ220FilesChip
+JaguarXJ220ImageChip
 JamesPond2
 JungleStrike
 JungleStrikeCD32

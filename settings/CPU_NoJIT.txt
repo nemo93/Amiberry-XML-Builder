@@ -164,6 +164,7 @@ Harlequin
 Harlequin1MB
 Heimdall
 HeimdallDe
+HeimdallEs
 HeimdallFr
 Heimdall2
 Hook

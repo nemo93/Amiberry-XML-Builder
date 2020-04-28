@@ -190,6 +190,7 @@ HardBall2
 HeartOfChina
 Heimdall
 HeimdallDe
+HeimdallEs
 HeimdallFr
 Heimdall2
 HeroQuest
