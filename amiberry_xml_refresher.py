@@ -189,7 +189,7 @@ for item in root.findall('game'):
     fast_ram = 4
                 
     old_chip_ram = chip_ram
-    for i in range(0, 4):
+    for i in range(0, 4): # No more than 8MB
       chip_ram = int(math.pow(2, i)) / 2
       if chip_ram >= 1:
         chip_ram = int(chip_ram)
@@ -197,29 +197,38 @@ for item in root.findall('game'):
       if check_list('Memory_ChipRam_' + str(chip_ram) + '.txt', sub_path) is True:
         chip_ram = int(chip_ram * 2)
         break
-      chip_ram = old_chip_ram
+     #chip_ram = old_chip_ram
+      else:
+        chip_ram = old_chip_ram
 
     # ' ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # ' when we want different fast ram!!
 
     old_fast_ram = fast_ram
-    for i in range(0, 4):
+    for i in range(0, 5): # No more than 16MB
       fast_ram = int(math.pow(2, i))
       if check_list('Memory_FastRam_' + str(fast_ram) + '.txt', sub_path) is True:
         break
-      fast_ram = old_fast_ram
+     #fast_ram = old_fast_ram
+      else:
+        fast_ram = old_fast_ram
     
     if hw_fast_ram == 8:
-      fast_ram = 8
+      fast_ram = hw_fast_ram
 
     # ' ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # ' when we want different Z3 ram!!
 
-    for i in range(0, 8):
+    for i in range(0, 8): # No more than 128MB
       z3_ram = int(math.pow(2, i))
       if check_list('Memory_Z3Ram_' + str(z3_ram) + '.txt', sub_path) is True:
         break
-      z3_ram = 0
+     #z3_ram = 0
+      else:
+        z3_ram = 0
+
+    if z3_ram != 0 or fast_ram >= 8:
+      print(sub_path,'-> Z3:',z3_ram,'Fast:',fast_ram,'Chip:',chip_ram)
 
     # '======== CHIPSET SETTINGS =======
     # ' ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
