@@ -1,0 +1,5 @@
+AkiraCD32
+DungeonMaster2AGA
+WormsDCAGA8MB
+WormsDCAGA12MB
+XP8AGA
