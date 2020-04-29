@@ -1,34 +1,20 @@
-Scanned file log: 2020-04-27 at 02:43:38
-Scanned: Emmanuelle (Francais)
-Scanned: Street Racer [AGA] CD
-Scanned: Ween The Prophecy (Francais)
-Scanned: Super Cauldron
-Scanned: Fascination (Espanol)
-Scanned: Fascination
-Scanned: Ween The Prophecy (Italiano)
-Scanned: Emmanuelle
-Scanned: Block Out
-Scanned: Spaceball
-Scanned: Colonization [AGA]
-Scanned: Tin Toy Adventure [AGA]
-Scanned: Freedom - Rebels In The Darkness
-Scanned: Pinball Magic
-Scanned: Ween - The Prophecy
-Scanned: Fascination (Deutsch)
-Scanned: Ween The Prophecy (Espanol)
-Scanned: Dragon Breed
-Scanned: Freedom (Deutsch)
-Scanned: Feudal Lords
-Scanned: Alien Breed II - The Horror Continues
-Scanned: Freedom (Francais)
-Scanned: Mixed Up Mother Goose
-Scanned: Ween The Prophecy (Deutsch)
-Skipped: AlienBreed2_v1.4_AGA_0044.lha
-Scanned: Colonization
-Scanned: Fascination (Italiano)
-Scanned: Fascination (Francais)
-Scanned: Freedom (Espanol)
-Scanned: Emmanuelle (Deutsch)
-Scanned: Starball
-Scanned: Emmanuelle (Espanol)
-Scanned: Valhalla and the Lord Of Infinity
+Scanned file log: 2020-04-29 at 02:47:38
+Scanned: Capone
+Scanned: Propaganda Zero Defects
+Skipped: RiseOfTheRobots_v1.3_CD32.lha
+Scanned: Hostage (NTSC)
+Scanned: Hostages
+Scanned: Operation Jupiter (Francais)
+Scanned: Vader
+Scanned: Rise Of The Robots
+Skipped: RiseOfTheRobots_v1.3_AGA_1763.lha
+Scanned: International Sports Challenge
+Scanned: BloodNet - A Cyberpunk Gothic
+Scanned: Valhalla - Before The War
+Scanned: SA SCombat Simulator
+Scanned: Mad TVDe
+Scanned: Deconstruction [AGA]
+Skipped: BloodNet_v2.1_AGA_1667.lha
+Scanned: Mad TVFr
+Scanned: Mad TV
+Skipped: ValhallaLordOfInfinity_v1.2.lha
