@@ -15,7 +15,7 @@ subpath: Bloodwych
 Clearly identify the changes to be made, and whether any existing settings should be removed.
 ```
 SCREEN_HEIGHT=262
-screen_center_horizontal=none
+screen_center_horizontal=smart
 screen_center_vertical=smart
 ```
 
