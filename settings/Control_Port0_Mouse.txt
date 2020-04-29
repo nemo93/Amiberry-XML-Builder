@@ -13,15 +13,15 @@ AlienBreed3DAGA
 AlienBreed3DCD32
 AllNewWorldOfLemmingsAGA
 Amberstar
+AmberstarDe
 AmberstarFast
+AmberstarDeFast
 ArcadePoolAGA
 ArcadePoolCD32
 ArcadeSnookerAGA
 ArcadeSnookerAGA
 ArcherMacleansPool
 ArmageddonMan
-ArmourGeddon
-ArmourGeddon2
 Arkanoid
 ArkanoidNTSC
 ArkanoidRevengeOfDoh

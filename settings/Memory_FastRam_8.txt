@@ -1,6 +1,8 @@
 AkiraCD32
 DungeonMaster2AGA
 Fire&Forget2
+WormsDCAGA
 WormsDCAGA8MB
 WormsDCAGA12MB
+WormsDirectorsCutAGA
 XP8AGA
