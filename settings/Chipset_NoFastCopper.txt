@@ -4,8 +4,8 @@ Darius+
 DisposableHero
 DisposableHeroFast
 EmpireSoccer94
-Fire&Ice
 FireAndIce
+Fire&Ice
 Heimdall
 HeimdallDe
 HeimdallEs
@@ -18,8 +18,8 @@ Hybris
 JupitersMasterdrive
 JurassicPark
 Necronom
-RuffNTumble
 RType2
+RuffNTumble
 ShadowFighter
 ShadowOfTheBeast
 ShadowOfTheBeast3

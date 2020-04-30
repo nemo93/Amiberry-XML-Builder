@@ -11,8 +11,8 @@ ApidyaKaiko
 Assassin
 AssassinSpecialEdition
 BodyBlowsAGA
-Bubble&Squeak
-Bubble&SqueakAGA
+BubbleAndSqueak
+BubbleAndSqueakAGA
 CapitalPunishmentAGA
 CapitalPunishmentAGACD
 Cedric

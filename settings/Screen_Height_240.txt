@@ -12,7 +12,10 @@ ArcadePoolCD32
 ArcadeSnookerAGA
 BarbarianPalace
 BartVsTheWorld
+BattleIsle
+BattleIsle&DataDisks
 BodyBlowsGalacticAGA
+BreathlessAGA
 BrutalFootball
 BrutalFootballAGA
 BubbaNStix
@@ -26,10 +29,10 @@ ChronoQuest
 CiscoHeat
 CrazySue
 CrazySueGoesOn
-DGeneration
 Dennis
 DennisAGA
 DesertStrike
+DGeneration
 DisposableHero
 DisposableHeroFast
 DoubleDragon3

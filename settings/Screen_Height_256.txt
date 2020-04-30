@@ -1,9 +1,6 @@
 3DPool
 3DWorldTennis
 AlienBash2
-AlienBreed3D2AGA4MB
-AlienBreed3D2AGA4MB
-AlienBreed3DAGAFixed
 AlienBreedTA
 AlienBreedTowerAssaultAGA
 Arkanoid
@@ -43,11 +40,11 @@ DimosQuest
 DonkTheSamuraiDuck
 DonkTheSamuraiDuckAGA
 DoubleDragon2
-DragonTiles
-DragonTilesAGA
 DragonsLair
 DragonsLair&EscapeFast
 DragonsLair&EscapeSlow
+DragonTiles
+DragonTilesAGA
 Embryo
 Executioner
 Exile
