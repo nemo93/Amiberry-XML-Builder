@@ -13,7 +13,6 @@ BaseJumpersCD32
 BatmanReturns
 BattleSquadron
 BattleSquadronDemo
-Benefactor
 BenefactorCD32
 BombPacCD32
 BombPacCD32AGA

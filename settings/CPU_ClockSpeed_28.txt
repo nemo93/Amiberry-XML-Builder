@@ -10,6 +10,7 @@ ChaosEngineCD32
 ChaosEngine2AGA
 CivilizationAGA
 CivilizationAGACD
+CivilizationAGADe
 ColonizationAGA
 DreamWebAGA
 DreamWebAGADe

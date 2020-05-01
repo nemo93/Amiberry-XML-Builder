@@ -64,6 +64,7 @@ ChambersOfShaolin
 ChaosEngine
 ChaosEngine2
 ChaosEngine2AGA
+ChaosEngine21MB
 ChaosEngineAGA
 ChaosEngineCD32
 CharlieJCool
@@ -126,6 +127,7 @@ FantasyWorldDizzy
 FIFAInternationalSoccer
 FinalFight
 FinalFight1MB
+FinalFight512k
 FireAndIce
 FireAndIceCD32
 FireForce

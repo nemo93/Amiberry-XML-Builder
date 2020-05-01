@@ -1,6 +1,4 @@
 ApanoSin
-ChaosEngine2
-ChaosEngine2AGA
 Damage
 DamagePreview
 DeluxeGalaga
