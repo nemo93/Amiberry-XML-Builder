@@ -1,20 +1,4 @@
-Scanned file log: 2020-04-29 at 02:47:38
-Scanned: Capone
-Scanned: Propaganda Zero Defects
-Skipped: RiseOfTheRobots_v1.3_CD32.lha
-Scanned: Hostage (NTSC)
-Scanned: Hostages
-Scanned: Operation Jupiter (Francais)
-Scanned: Vader
-Scanned: Rise Of The Robots
-Skipped: RiseOfTheRobots_v1.3_AGA_1763.lha
-Scanned: International Sports Challenge
-Scanned: BloodNet - A Cyberpunk Gothic
-Scanned: Valhalla - Before The War
-Scanned: SA SCombat Simulator
-Scanned: Mad TVDe
-Scanned: Deconstruction [AGA]
-Skipped: BloodNet_v2.1_AGA_1667.lha
-Scanned: Mad TVFr
-Scanned: Mad TV
-Skipped: ValhallaLordOfInfinity_v1.2.lha
+Scanned file log: 2020-05-01 at 02:31:52
+Scanned: Quasar Wars [AGA]
+Scanned: Black Shadow
+Scanned: Dragon Spirit
