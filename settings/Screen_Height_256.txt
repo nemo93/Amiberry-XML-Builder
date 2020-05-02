@@ -35,6 +35,7 @@ Commando
 CrystalKingdomDizzy
 Cytron
 Deliverance
+Deliverance512k
 DimosQuest
 DonkTheSamuraiDuck
 DonkTheSamuraiDuckAGA
@@ -58,6 +59,9 @@ Goal
 GuySpy
 GuySpyCD32
 Hilt2
+Humans
+HumansDe
+HumansFr
 Humans3
 Humans3AGA
 Hybris

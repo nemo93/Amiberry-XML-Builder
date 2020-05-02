@@ -3,8 +3,10 @@ AlienBreed3DNoMusicAGA
 AlienBreed3D2AGA
 BrianTheLionAGA
 Deliverance
+Deliverance512k
 DynaBlaster
 JamesPond3AGA
+JimPower
 KidChaos
 Leander
 Nicky2

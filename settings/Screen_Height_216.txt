@@ -42,8 +42,8 @@ FireAndIce
 FireAndIceCD32
 Fire&Ice
 Fire&IceCD32
-Frontier
-FrontierCD32
+FirstSamurai
+FirstSamuraiA1200Version
 FuryOfTheFurries
 FuryOfTheFurriesCD32
 GemStoneLegend
@@ -56,6 +56,7 @@ JaguarXJ220FilesChip
 JaguarXJ220Image
 JaguarXJ220ImageChip
 JamesPond2
+JamesPond2AGA
 JungleStrike
 JungleStrikeCD32
 JurassicPark

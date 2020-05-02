@@ -190,6 +190,7 @@ EyeOfTheBeholderDe
 F15StrikeEagle2
 F29Retaliator
 FA18Interceptor
+Falcon
 FateGatesOfDawn
 FearsAGA
 FearsCD32
@@ -200,6 +201,9 @@ FormulaOneGrandPrix4Disk
 FranticFreddie
 Frontier
 FrontierCD32
+FrontierCz
+FrontierDe
+FrontierFr
 GhostsNGoblins
 GloomAGA
 GloomCD32
@@ -218,11 +222,13 @@ Gunship2000CD32
 HardBall
 HardBall2
 HeartOfChina
+HeartOfChinaDe
 Heimdall
-Heimdall2
 HeimdallDe
 HeimdallEs
 HeimdallFr
+Heimdall2
+Heimdall2AGA
 HeroesOfTheLance
 HeroQuest
 HeroQuest2
@@ -241,6 +247,8 @@ Hostages
 Humans3
 Humans3AGA
 Hunter
+HunterDe
+HunterFr
 HuntForRedOctober
 Impact
 Imperium
@@ -250,8 +258,10 @@ Indianapolis500
 Interphase
 InterphaseAmigaFormat
 Ishar
+IsharEs
 Ishar2
 Ishar2AGA
+Ishar2Es
 Ishar3
 Ishar3AGA
 Ishar3De
