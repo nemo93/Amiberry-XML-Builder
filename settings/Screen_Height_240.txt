@@ -59,6 +59,10 @@ FantasticDizzy
 FinalFight
 FinalFight1MB
 FinalFight512k
+Fire&IceCD32
+FireAndIceCD32
+FirstSamurai
+FirstSamuraiA1200Version
 Flashback
 FlashbackCz
 FlashbackDe
@@ -81,9 +85,6 @@ GloomCD32
 GreatCourts2
 GreatCourts2512KB
 GuardianAGA
-Heimdall2
-Heimdall2AGA
-Heimdall2CD32
 IndyHeat
 ItCameFromTheDesert
 JamesPond3AGA

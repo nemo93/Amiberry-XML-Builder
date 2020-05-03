@@ -204,6 +204,7 @@ FrontierCD32
 FrontierCz
 FrontierDe
 FrontierFr
+GalacticEmpire
 GhostsNGoblins
 GloomAGA
 GloomCD32

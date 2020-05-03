@@ -226,6 +226,7 @@ Fire&Forget
 Fire&Forget2
 FireAndBrimstone
 FlightOfTheAmazonQueen
+FlinkCD32
 Flipit&Magnose
 Flood
 FormulaOneGrandPrix
@@ -282,6 +283,9 @@ Hilt
 Hook
 Hostages
 HudsonHawk
+Humans
+HumansDe
+HumansFr
 Humans2
 Hunter
 HunterDe

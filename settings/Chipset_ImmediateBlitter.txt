@@ -7,11 +7,6 @@ CrazyCars2
 DeconstructionAGA
 Deliverance
 Deliverance512k
-Elvira2
-Elvira2De
-Elvira2Es
-Elvira2Fr
-Elvira2It
 Frontier
 FrontierCD32
 FrontierCz
@@ -20,6 +15,9 @@ FrontierFr
 Hunter
 HunterDe
 HunterFr
+Ishar
+IsharAGA
+IsharEs
 ItCameFromTheDesert
 ItCameFromTheDesert2
 NoSecondPrize
