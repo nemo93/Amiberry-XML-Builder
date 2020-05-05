@@ -1,24 +1,12 @@
-Scanned file log: 2020-05-03 at 02:42:31
-Scanned: Prince De Perse (Francais)
-Scanned: Bump 'N' Burn [CD32]
-Scanned: Leisure Suit Larry 3 (Deutsch)
-Skipped: QuasarWars_v1.0_AGA.lha
-Scanned: Sensible World Of Soccer 2020
-Scanned: Dragon Spirit
-Scanned: Prince Of Persia
-Scanned: Bump 'N' Burn
-Scanned: Vision Of The Art
-Scanned: Arabian Nights [CD32]
-Scanned: Prince Of Persia (NTSC)
-Scanned: Prince Of Persia (Deutsch)
-Scanned: Jim Power - In Mutant Planet
-Scanned: Feudal Lords
-Scanned: Arabian Nights
-Scanned: Gods
-Scanned: Lost Symphony
-Scanned: Arabian Nights (512Kb)
-Scanned: Gods (NTSC)
-Scanned: West Phaser (Francais)
-Scanned: Leisure Suit Larry 3 - Passionate Patti In Pursuit Of The Pulsating Pectorals
+Scanned file log: 2020-05-05 at 02:34:25
+Scanned: Danger Freak
+Scanned: Atmosphere
+Scanned: Exile [CD32]
 Scanned: Ninja Warriors
-Scanned: Westphaser
+Scanned: Gods (NTSC)
+Scanned: Island Of Lost Hope
+Scanned: Exile [AGA]
+Scanned: Gods (1MB)
+Scanned: Gods
+Skipped: Exile_v1.3_0032.lha
+Scanned: Gods (1MB)NTSC
