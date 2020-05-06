@@ -433,11 +433,11 @@ for file2 in Path(input_directory + "/").glob('**/*.lha'):
                                 
                 # ' screen centering (recently added)
                 HW_H_CENTER = 'SMART'
-                if check_list('Screen_Center_H.txt', sub_path) is True:
+                if check_list('Screen_NoCenter_H.txt', sub_path) is True:
                   HW_H_CENTER = 'NONE'
 
                 HW_V_CENTER = 'SMART'
-                if check_list('Screen_Center_V.txt', sub_path) is True:
+                if check_list('Screen_NoCenter_V.txt', sub_path) is True:
                   HW_V_CENTER = 'NONE'
 
                 # ' extras
