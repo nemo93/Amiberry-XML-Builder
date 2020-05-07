@@ -1,12 +1,3 @@
-Scanned file log: 2020-05-05 at 02:34:25
-Scanned: Danger Freak
-Scanned: Atmosphere
-Scanned: Exile [CD32]
-Scanned: Ninja Warriors
-Scanned: Gods (NTSC)
-Scanned: Island Of Lost Hope
-Scanned: Exile [AGA]
-Scanned: Gods (1MB)
-Scanned: Gods
-Skipped: Exile_v1.3_0032.lha
-Scanned: Gods (1MB)NTSC
+Scanned file log: 2020-05-07 at 02:31:57
+Scanned: Birthday
+Scanned: Megademo 3 NSFLT
