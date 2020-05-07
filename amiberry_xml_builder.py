@@ -97,6 +97,7 @@ print(
     text_utils.FontColours.FAIL + "www.ultimateamiga.co.uk" + text_utils.FontColours.ENDC)
 print()
 
+
 # =======================================
 # command-line stuff | not needed now
 # =======================================
@@ -162,6 +163,25 @@ utc_datetime_delta = datetime.datetime.utcnow()-datetime.timedelta(days=getdelta
 # also get whdbfile size before modification
 whdsize = Path(whdbfile).stat().st_size
 
+# validating XML file, check for non ASCII chars
+# =======================================
+xmlerrorlog = 'xml_error_syntax.log'
+
+# parse XML and validation
+try:
+    root = etree.parse(whdbfile)
+    print('XML well formed, ok.')
+
+# check for XML syntax errors
+except etree.XMLSyntaxError as err:
+    print('XML Syntax Error, check', xmlerrorlog)
+    with open(xmlerrorlog, 'w') as error_log_file:
+        error_log_file.write(str(err.error_log))
+
+except:
+    print('Unknown error with XML file.')
+
+# =======================================
 # logging into FTP and get a list of recently modified files
 with ftpcon as host: 
     ftpcon.use_list_a_option = 'False'
@@ -764,7 +784,7 @@ with open(whdbtmp, 'r') as nomoreoffset:
 
 with open(whdbtmp, 'w') as nomoreoffset:
     for line in olines:
-        if not any(offset in line for offset in offtext):
+        if not any(offset in line for offset in offtext) and all(ord(ch) < 128 for ch in line): #also ensure only ASCII character
             nomoreoffset.write(line)
 #
 ######

@@ -72,6 +72,7 @@ print()
 whdbfile = 'whdload_db.xml'
 whdbtmp = 'whdload_db.xml.tmp'
 whdbbak = 'whdload_db.xml.bak'
+xmlerrorlog = 'xml_error_syntax.log'
 
 # also get whdbfile size before modification
 whdsize = Path(whdbfile).stat().st_size
@@ -88,12 +89,33 @@ XML_HEADER = '<whdbooter timestamp="' + datetime.datetime.now().strftime("%Y-%m-
 XML = ''
 XML_FOOTER = '</whdbooter>'
 
-# brutal way: extract and reinject data into the XML.
-# need to think of a smarter to do that // perf.
+# the 'magic parser' allows for invalid XML to be parsed anyway
+#magic_parser = etree.XMLParser(encoding='utf-8', recover=True)
+
+# parse XML and validation
+try:
+    #root = etree.parse(whdbfile, magic_parser).getroot()
+    root = etree.parse(whdbfile)
+    print('XML well formed, ok.')
+
+# check for XML syntax errors
+except etree.XMLSyntaxError as err:
+    print('XML Syntax Error, check', xmlerrorlog)
+    with open(xmlerrorlog, 'w') as error_log_file:
+        error_log_file.write(str(err.error_log))
+#    quit()
+
+except:
+    print('Unknown error with XML file.')
+#    quit()
+
+# get XML root
 root = etree.parse(whdbfile).getroot()
-total_item = len(root.getchildren()) 
+total_item = len(root.getchildren())
 count = 0
 
+# brutal way: extract and reinject data into the XML.
+# need to think of a smarter to do that // perf.
 for item in root.findall('game'):
     count += 1
     file_name = item.xpath('@filename')[0]
@@ -468,7 +490,7 @@ with open(whdbtmp, 'r') as nomoreoffset:
 
 with open(whdbtmp, 'w') as nomoreoffset:
     for line in olines:
-        if not any(offset in line for offset in offtext):
+        if not any(offset in line for offset in offtext) and all(ord(ch) < 128 for ch in line): #also ensure only ASCII character
           nomoreoffset.write(line)
 #
 ######
