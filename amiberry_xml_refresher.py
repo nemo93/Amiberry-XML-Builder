@@ -59,6 +59,7 @@ def check_list(in_file, game_name):
 def sortchildrenby(parent, attr):
     parent[:] = sorted(parent, key=lambda child: child.get(attr))
 
+
 # =======================================
 # main section starting here...
 # =======================================
@@ -111,7 +112,7 @@ except:
 
 # get XML root
 root = etree.parse(whdbfile).getroot()
-total_item = len(root.getchildren())
+total_item = len(root.getchildren()) 
 count = 0
 
 # brutal way: extract and reinject data into the XML.
@@ -136,8 +137,10 @@ for item in root.findall('game'):
 
     # Get FAST_RAM if already set / max FAST_RAM 8Mb
     hw_fast_ram = item.find('hardware').text
-    if hw_fast_ram.find('FAST_RAM=8') > -1:
-      hw_fast_ram = 8
+    if hw_fast_ram.find('FAST_RAM=8') > -1 and file_name.find('-WHDL') > -1:
+      has_fast_ram = 1
+    else:
+      has_fast_ram = 0
 
     # Attempt to fix empty name or subpath
     if not full_game_name or not sub_path:
@@ -235,8 +238,8 @@ for item in root.findall('game'):
       else:
         fast_ram = old_fast_ram
     
-    if hw_fast_ram == 8:
-      fast_ram = hw_fast_ram
+    if has_fast_ram == 1:
+      fast_ram = 8
 
     # ' ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # ' when we want different Z3 ram!!
@@ -249,8 +252,6 @@ for item in root.findall('game'):
       else:
         z3_ram = 0
 
-#    if z3_ram != 0 or fast_ram >= 8:
-#      print(sub_path,'-> Z3:',z3_ram,'Fast:',fast_ram,'Chip:',chip_ram)
 
     # '======== CHIPSET SETTINGS =======
     # ' ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -492,6 +493,7 @@ with open(whdbtmp, 'w') as nomoreoffset:
     for line in olines:
         if not any(offset in line for offset in offtext) and all(ord(ch) < 128 for ch in line): #also ensure only ASCII character
           nomoreoffset.write(line)
+
 #
 ######
 
