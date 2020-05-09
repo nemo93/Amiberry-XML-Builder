@@ -1,3 +1,11 @@
-Scanned file log: 2020-05-07 at 02:31:57
-Scanned: Birthday
+Scanned file log: 2020-05-09 at 02:34:30
+Scanned: Jim Power - In Mutant Planet
+Scanned: TwinWorld - Land of Vision
+Skipped: Exile_v1.0_CD32.lha
+Skipped: Exile_v1.0_AGA_0885.lha
+Scanned: Exile
 Scanned: Megademo 3 NSFLT
+Scanned: Gods (NTSC)
+Scanned: Elektrica
+Scanned: Gods
+Scanned: Kraftwerk Mega Mix
