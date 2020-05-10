@@ -180,6 +180,12 @@ DogsOfWar
 DonaldDucksPlayground
 DoubleDragon
 DragonsBreath
+DrakkhenFiles
+DrakkhenImage
+DrakkhenFilesDe
+DrakkhenImageDe
+DrakkhenFilesFr
+DrakkhenImageFr
 DreamWeb
 DreamWebAGA
 DreamWebAGADe
@@ -417,6 +423,10 @@ Might&Magic2
 MiniGolfPlus
 Moebius
 MonkeyIsland2
+MonkeyIsland2De
+MonkeyIsland2Es
+MonkeyIsland2Fr
+MonkeyIsland2It
 MoonShineRacers
 Moonstone
 Motorhead
@@ -503,6 +513,10 @@ RType2
 SabreTeam
 SabreTeamAGA
 SecretOfMonkeyIsland
+SecretOfMonkeyIslandDe
+SecretOfMonkeyIslandEs
+SecretOfMonkeyIslandFr
+SecretOfMonkeyIslandIt
 Settlers
 Shadowgate
 Shadowlands
