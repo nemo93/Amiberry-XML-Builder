@@ -1,4 +1,5 @@
 BeneathASteelSky
 DungeonMaster
 FlightOfTheAmazonQueen
+MonkeyIsland2
 RiseOfTheRobots
