@@ -463,7 +463,6 @@ for item in root.findall('game'):
 
     if len(custom_text)>0:
       XML = XML + chr(9)+ chr(9) + '<custom_controls>' + chr(10) + custom_text  + chr(9) + chr(9) + '</custom_controls>' + chr(10)
-#      XML = XML + chr(9)+ chr(9) + '<custom_controls>' + chr(10) + chr(9) + chr(9) + custom_text  + chr(10) + chr(9) + chr(9) + '</custom_controls>' + chr(10)
                 
     XML = XML + chr(9) + '</game>' + chr(10)
 
