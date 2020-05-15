@@ -432,13 +432,15 @@ for item in root.findall('game'):
                                 
     if os.path.isfile(custom_file) == True:
       # remove any items which are not amiberry custom settings
-      with open(custom_file) as f:
+      with open(custom_file, 'r') as f:
         content = f.readlines()
         f.close()
-                                    
+
       for this_line in content:
-        if this_line.find('amiberry_custom') > -1:
-          custom_text += this_line
+        if this_line.find('amiberry_custom') > -1 and '\n' in this_line:
+          custom_text += chr(9) + chr(9) + this_line
+        elif this_line.find('amiberry_custom') > -1 and not '\n' in this_line:
+          custom_text += chr(9) + chr(9) + this_line + chr(10)
 
     extra_libs = 'False'
     if check_list('WHD_Libraries.txt', sub_path) is True:
@@ -460,7 +462,8 @@ for item in root.findall('game'):
     XML = XML + chr(10) + chr(9) + chr(9) + '</hardware>' + chr(10)
 
     if len(custom_text)>0:
-      XML = XML + chr(9)+ chr(9) + '<custom_controls>' + chr(10) + chr(9) + chr(9) + custom_text  + chr(10) + chr(9) + chr(9) + '</custom_controls>' + chr(10)
+      XML = XML + chr(9)+ chr(9) + '<custom_controls>' + chr(10) + custom_text  + chr(9) + chr(9) + '</custom_controls>' + chr(10)
+#      XML = XML + chr(9)+ chr(9) + '<custom_controls>' + chr(10) + chr(9) + chr(9) + custom_text  + chr(10) + chr(9) + chr(9) + '</custom_controls>' + chr(10)
                 
     XML = XML + chr(9) + '</game>' + chr(10)
 
