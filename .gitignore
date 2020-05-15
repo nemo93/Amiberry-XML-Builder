@@ -2,3 +2,11 @@ __pycache__/openretroid.cpython-36.pyc
 slave_lha/parse_lha/__pycache__/read_lha.cpython-36.pyc
 utils/__pycache__/text_utils.cpython-36.pyc
 whdload/__pycache__/whdload_slave.cpython-36.pyc
+__pycache__/
+slave_lha/__pycache__/__init__.cpython-35.pyc
+slave_lha/parse_lha/__pycache__/__init__.cpython-35.pyc
+slave_lha/parse_lha/__pycache__/read_lha.cpython-35.pyc
+utils/__pycache__/__init__.cpython-35.pyc
+utils/__pycache__/text_utils.cpython-35.pyc
+whdload/__pycache__/__init__.cpython-35.pyc
+whdload/__pycache__/whdload_slave.cpython-35.pyc
