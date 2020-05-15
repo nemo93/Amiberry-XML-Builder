@@ -1,16 +1,1 @@
-Scanned file log: 2020-05-13 at 02:39:23
-Scanned: Danger Freak
-Scanned: Disposable Hero (Fast)
-Skipped: Benefactor_v1.2_0636.lha
-Scanned: Disposable Hero
-Scanned: Chaos Engine 2 [AGA]
-Scanned: Chaos Engine 2
-Scanned: Magic Pockets
-Skipped: DangerFreak_v1.0_0975.lha
-Scanned: Deconstruction [AGA]
-Scanned: Chaos Engine 21 MB
-Scanned: Disposable Hero [CD32]
-Scanned: Tin Toy Adventure [AGA]
-Scanned: Magic Pockets (NTSC)
-Scanned: Benefactor [CD32]
-Scanned: Megademo 3 NSFLT
+Scanned file log: 2020-05-15 at 02:31:03
