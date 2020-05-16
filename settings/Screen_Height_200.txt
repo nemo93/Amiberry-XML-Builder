@@ -544,8 +544,6 @@ SecretOfMonkeyIslandDe
 SecretOfMonkeyIslandEs
 SecretOfMonkeyIslandFr
 SecretOfMonkeyIslandIt
-Settlers
-SettlersFr
 ShadowDancer
 Shadowgate
 Shadowlands
