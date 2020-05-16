@@ -85,8 +85,10 @@ Premiere
 PremierManager
 SantasXmasCaper
 SensibleGolf
-SlamTilt
+SkeletonKrewAGA
+Skweek
 SlamTiltAGA
+SlamTiltDemoAGA
 SolomonsKey2
 SuperfrogCD32
 SuprTennisChmps
