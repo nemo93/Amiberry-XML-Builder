@@ -120,16 +120,10 @@ StegTheSlug
 Strider
 Strider2
 STUNRunner
-StuntCarRacer
-StuntCarRacerTNT
-SuperOffRoad
-SuperOffRoadNTSC
 SuperSki
 SuperSkweek
-SuperStardustAGA
 SuprStrtFtr2TrboAGA
 SuspiciousCargo
-Switchblade
 TennisCup1Mb
 TestDrive2
 ThemePark

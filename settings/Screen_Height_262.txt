@@ -48,8 +48,6 @@ RevengeOfMutantCamels2
 Seek&Destroy
 Seek&DestroyAGA
 SlamTiltAGA2MB
-SpaceCrusade
-SpaceCrusade&VoyageBeyond
 Stardust
 StarTrek25thAnnivAGA
 StarTrek25thAnnivAGADe

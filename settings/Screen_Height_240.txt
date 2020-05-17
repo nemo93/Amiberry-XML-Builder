@@ -144,14 +144,14 @@ SinkOrSwim512KB
 Skidmarks
 Skull&Crossbones
 SlipStream
+SoccerKid
+SoccerKid1MbChip
 SoccerKidAGA
 SpaceAce
 SpaceAceDemo
 SpaceAce2
-Speedball2
 StarGoose
 SuperCars2
-Switchblade
 TennisCup
 TennisCup1Mb
 ThunderHawkAH73M

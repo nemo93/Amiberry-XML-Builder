@@ -90,9 +90,12 @@ Skweek
 SlamTiltAGA
 SlamTiltDemoAGA
 SolomonsKey2
+SpaceCrusade
+SpaceCrusade&VoyageBeyond
 SuperfrogCD32
 SuprTennisChmps
 Switchblade2
+SWIV
 TanksFurry
 TennisChamps
 TinyTroops

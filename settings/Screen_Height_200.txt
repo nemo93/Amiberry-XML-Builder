@@ -577,10 +577,15 @@ StarCrusader
 StarCrusaderAGA
 StreetFighter
 StreetFighter2
+StuntCarRacer
+StuntCarRacerTNT
 SuperCars2Disk
 SuperCars1Disk
 SuperCauldron
+SuperOffRoad
+SuperOffRoadNTSC
 Supremacy
+Switchblade
 Syndicate
 SyndicateDe
 SyndicateAmericanRevolt
