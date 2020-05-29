@@ -1,11 +1,2 @@
-Scanned file log: 2020-05-27 at 02:33:54
-Scanned: Asterix Im Morgenland (Deutsch)
-Scanned: Asterix Op Hinkelstein (Deutsch)
-Scanned: Tin Toy Adventure [AGA]
-Scanned: Asterix El Golpe Del Menhir (Espanol)
-Scanned: Asterix Chez Rahazade (Francais)
-Scanned: Dungeon Master
-Skipped: Gulp_v1.0_CD32.lha
-Scanned: Asterix - Operation Getafix
-Scanned: Gulp
-Scanned: Asterix Le Coup Du Menhir (Francais)
+Scanned file log: 2020-05-29 at 02:32:08
+Scanned: Goblins 3
