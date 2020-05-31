@@ -1,2 +1,5 @@
-Scanned file log: 2020-05-29 at 02:32:08
-Scanned: Goblins 3
+Scanned file log: 2020-05-31 at 02:33:10
+Scanned: Gulp
+Scanned: Populous 2 (& Challenge Games)
+Skipped: Gulp_v1.0_CD32.lha
+Scanned: Populous 2
