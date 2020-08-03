@@ -1,13 +1,2 @@
-Scanned file log: 2020-08-01 at 02:46:37
-Skipped: Exile_v1.4_0032.lha
-Skipped: LeisureSuitLarry3_v2.1_De.lha
-Skipped: Exile_v1.1_CD32.lha
-Skipped: Roadkill_v2.2-B_AGA_1108.lha
-Skipped: Cedric_v2.1.lha
-Skipped: PinballDreams_v1.7_NTSC.lha
-Skipped: Roadkill_v2.2-B_CD32_NoIntro.lha
-Skipped: PinballDreams_v1.7_0377.lha
-Skipped: Exile_v1.1_AGA_0885.lha
-Skipped: Roadkill_v2.2-B_CD32.lha
-Skipped: LeisureSuitLarry3_v2.1_0690.lha
-Skipped: NavySeals_v2.1_1251.lha
+Scanned file log: 2020-08-03 at 12:27:40
+Scanned: Wizkid
