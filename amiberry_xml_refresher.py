@@ -151,27 +151,27 @@ for item in root.findall('game'):
       else:
         sub_path = get_sub_path
                 
-    # '======== DISPLAY SETTINGS =======
-    # ' ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    # ======== DISPLAY SETTINGS =======
+    #  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    # ' screen heights { 200, 216, 224, 240, 256, 262, 270 };
+    # screen heights { 400, 432, 448, 480, 512, 524, 540 };
     HW_HEIGHT = ''
-    if check_list('Screen_Height_270.txt', sub_path) is True:
-      HW_HEIGHT = '270'
-    if check_list('Screen_Height_262.txt', sub_path) is True:
-      HW_HEIGHT = '262'
-    if check_list('Screen_Height_256.txt', sub_path) is True:
-      HW_HEIGHT = '256'
-    if check_list('Screen_Height_240.txt', sub_path) is True:
-      HW_HEIGHT = '240'
-    if check_list('Screen_Height_224.txt', sub_path) is True:
-      HW_HEIGHT = '224'
-    if check_list('Screen_Height_216.txt', sub_path) is True:
-      HW_HEIGHT = '216'
-    if check_list('Screen_Height_200.txt', sub_path) is True:
-      HW_HEIGHT = '200'
+    if check_list('Screen_Height_400.txt', sub_path) is True:
+      HW_HEIGHT = '400'
+    if check_list('Screen_Height_432.txt', sub_path) is True:
+      HW_HEIGHT = '432'
+    if check_list('Screen_Height_448.txt', sub_path) is True:
+      HW_HEIGHT = '448'
+    if check_list('Screen_Height_480.txt', sub_path) is True:
+      HW_HEIGHT = '480'
+    if check_list('Screen_Height_512.txt', sub_path) is True:
+      HW_HEIGHT = '512'
+    if check_list('Screen_Height_524.txt', sub_path) is True:
+      HW_HEIGHT = '524'
+    if check_list('Screen_Height_540.txt', sub_path) is True:
+      HW_HEIGHT = '540'
 
-    # ' screen widths  { 320, 352, 384, 640, 704, 720, 768 };
+    # screen widths  { 320, 352, 384, 640, 704, 720, 768 };
     HW_WIDTH = ''
     if check_list('Screen_Width_320.txt', sub_path) is True:
       HW_WIDTH = '320'
@@ -188,7 +188,7 @@ for item in root.findall('game'):
     if check_list('Screen_Width_768.txt', sub_path) is True:
       HW_WIDTH = '768'
                                 
-    # ' screen centering (recently added)
+    # screen centering
     HW_H_CENTER = 'SMART'
     if check_list('Screen_NoCenter_H.txt', sub_path) is True:
       HW_H_CENTER = 'NONE'
@@ -197,7 +197,7 @@ for item in root.findall('game'):
     if check_list('Screen_NoCenter_V.txt', sub_path) is True:
       HW_V_CENTER = 'NONE'
 
-    # ' extras
+    # extras
     HW_NTSC = ''
     if check_list('Screen_ForceNTSC.txt', sub_path) is True:
       HW_NTSC = 'TRUE'       
