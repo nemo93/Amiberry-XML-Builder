@@ -8,7 +8,7 @@ import shutil
 from lxml import etree
 
 # =======================================
-# Methods
+# Functions
 # =======================================
 # Get a value from a file
 def value_list(in_file, game_name):
@@ -55,10 +55,17 @@ def check_list(in_file, game_name):
 
     return answer
 
-# For XML sorting
+# XML sorting
 def sortchildrenby(parent, attr):
     parent[:] = sorted(parent, key=lambda child: child.get(attr))
 
+# Clean up a dir
+# 1st parameter is the directory
+# 2nd parameter is the file extension to be deleted
+def tmpcleanup(inputdir, filext):
+    for fileclean in os.listdir(inputdir):
+        if fileclean.endswith(filext):
+            os.remove(os.path.join(inputdir, fileclean))
 
 # =======================================
 # main section starting here...
@@ -79,13 +86,15 @@ xmlerrorlog = 'xml_error_syntax.log'
 whdsize = Path(whdbfile).stat().st_size
 
 # =======================================
-# Backup before doing naughty stuff!!
+# Backup
 # =======================================
 if not os.path.isfile(whdbbak) or whdsize >= os.stat(whdbbak).st_size:
     shutil.copy2(whdbfile, whdbbak)
     whdbaksize = Path(whdbbak).stat().st_size
 
-# Start to format XML and extract some values
+# =======================================
+# Start XML generation
+# =======================================
 XML_HEADER = '<whdbooter timestamp="' + datetime.datetime.now().strftime("%Y-%m-%d at %H:%M:%S") + '">' + chr(10)
 XML = ''
 XML_FOOTER = '</whdbooter>'
@@ -94,6 +103,7 @@ XML_FOOTER = '</whdbooter>'
 #magic_parser = etree.XMLParser(encoding='utf-8', recover=True)
 
 # parse XML and validation
+# =======================================
 try:
     #root = etree.parse(whdbfile, magic_parser).getroot()
     root = etree.parse(whdbfile)
@@ -104,18 +114,16 @@ except etree.XMLSyntaxError as err:
     print('XML Syntax Error, check', xmlerrorlog)
     with open(xmlerrorlog, 'w') as error_log_file:
         error_log_file.write(str(err.error_log))
-#    quit()
 
 except:
     print('Unknown error with XML file.')
-#    quit()
 
 # get XML root
 root = etree.parse(whdbfile).getroot()
 total_item = len(root.getchildren()) 
 count = 0
 
-# brutal way: extract and reinject data into the XML.
+# brutal way: extract then reinject data into the XML.
 # need to think of a smarter to do that // perf.
 for item in root.findall('game'):
     count += 1
@@ -132,323 +140,314 @@ for item in root.findall('game'):
     SLAVE_XML = ''
     SXML = []
     for slave in item.findall('.slave'):
-      SXML.append(etree.tostring(slave).decode()) # convert to str
-      SLAVE_XML = ''.join(SXML)
+        SXML.append(etree.tostring(slave).decode()) # convert to str
+        SLAVE_XML = ''.join(SXML)
 
     # Get FAST_RAM if already set / max FAST_RAM 8Mb
     hw_fast_ram = item.find('hardware').text
     if hw_fast_ram.find('FAST_RAM=8') > -1 and file_name.find('-WHDL') > -1:
-      has_fast_ram = 1
+        has_fast_ram = 1
     else:
-      has_fast_ram = 0
+        has_fast_ram = 0
 
     # Attempt to fix empty name or subpath
     if not full_game_name or not sub_path:
-      full_game_name = file_name.replace('_',' ')
-      get_sub_path = text_utils.left(slave_default,len(slave_default) - len('.slave'))
-      if get_sub_path.find('\\') > -1:
-        sub_path = get_sub_path.split('\\', 1)[0]
-      else:
-        sub_path = get_sub_path
+        full_game_name = file_name.replace('_',' ')
+        get_sub_path = text_utils.left(slave_default,len(slave_default) - len('.slave'))
+        if get_sub_path.find('\\') > -1:
+            sub_path = get_sub_path.split('\\', 1)[0]
+        else:
+            sub_path = get_sub_path
                 
     # ======== DISPLAY SETTINGS =======
-    #  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    # screen heights { 400, 432, 448, 480, 512, 524, 540 };
+    # prior to Amiberry 3.2 possible heights { 200, 216, 224, 240, 256, 262, 270 };
+    # since 3.2 => heights { 400, 432, 448, 480, 512, 524, 540 };
+    listheights = ['400', '432', '448', '480', '512', '524', '540']
     HW_HEIGHT = ''
-    if check_list('Screen_Height_400.txt', sub_path) is True:
-      HW_HEIGHT = '400'
-    if check_list('Screen_Height_432.txt', sub_path) is True:
-      HW_HEIGHT = '432'
-    if check_list('Screen_Height_448.txt', sub_path) is True:
-      HW_HEIGHT = '448'
-    if check_list('Screen_Height_480.txt', sub_path) is True:
-      HW_HEIGHT = '480'
-    if check_list('Screen_Height_512.txt', sub_path) is True:
-      HW_HEIGHT = '512'
-    if check_list('Screen_Height_524.txt', sub_path) is True:
-      HW_HEIGHT = '524'
-    if check_list('Screen_Height_540.txt', sub_path) is True:
-      HW_HEIGHT = '540'
+
+    for possibleheight in listheights:
+        if check_list('Screen_Height_'+possibleheight+'.txt', sub_path) is True:
+            HW_HEIGHT = possibleheight
+            break
 
     # screen widths  { 320, 352, 384, 640, 704, 720, 768 };
+    listwidths = ['320', '352', '384', '640', '704', '720', '768']
     HW_WIDTH = ''
-    if check_list('Screen_Width_320.txt', sub_path) is True:
-      HW_WIDTH = '320'
-    if check_list('Screen_Width_352.txt', sub_path) is True:
-      HW_WIDTH = '352'
-    if check_list('Screen_Width_384.txt', sub_path) is True:
-      HW_WIDTH = '384'
-    if check_list('Screen_Width_640.txt', sub_path) is True:
-      HW_WIDTH = '640'
-    if check_list('Screen_Width_704.txt', sub_path) is True:
-      HW_WIDTH = '704'
-    if check_list('Screen_Width_720.txt', sub_path) is True:
-      HW_WIDTH = '720'
-    if check_list('Screen_Width_768.txt', sub_path) is True:
-      HW_WIDTH = '768'
-                                
-    # screen centering
+
+    for possiblewidth in listwidths:
+        if check_list('Screen_Width_'+possiblewidth+'.txt', sub_path) is True:
+            HW_WIDTH = possiblewidth
+            break
+
+    # screen centering 
     HW_H_CENTER = 'SMART'
     if check_list('Screen_NoCenter_H.txt', sub_path) is True:
-      HW_H_CENTER = 'NONE'
+        HW_H_CENTER = 'NONE'
 
     HW_V_CENTER = 'SMART'
     if check_list('Screen_NoCenter_V.txt', sub_path) is True:
-      HW_V_CENTER = 'NONE'
+        HW_V_CENTER = 'NONE'
+
+    # auto centering
+    HW_AUTO_CENTER = 'FALSE'
+    if check_list('Screen_AutoCenter.txt', sub_path) is True or HW_HEIGHT == '':
+        HW_AUTO_CENTER = 'TRUE'
 
     # extras
     HW_NTSC = ''
     if check_list('Screen_ForceNTSC.txt', sub_path) is True:
-      HW_NTSC = 'TRUE'       
+        HW_NTSC = 'TRUE'       
     elif full_game_name.find('NTSC') > -1:
-      HW_NTSC = 'TRUE' 
+        HW_NTSC = 'TRUE' 
                             
-    # '======== CONTROL SETTINGS =======
-    # ' ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    # ' mouse / mouse 2 / CD32
+    # ======== CONTROL SETTINGS =======
+    # mouse / mouse 2 / CD32
 
     use_mouse1 = check_list('Control_Port0_Mouse.txt', sub_path)
     use_mouse2 = check_list('Control_Port1_Mouse.txt', sub_path)
     use_cd32_pad = check_list('Control_CD32.txt', sub_path)
 
+    # ======== MEMORY SETTINGS =======
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
     chip_ram = 2
     fast_ram = 4
-                
+
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    # when we want different CHIP ram!
+
     old_chip_ram = chip_ram
-    for i in range(0, 4): # No more than 8MB
-      chip_ram = int(math.pow(2, i)) / 2
-      if chip_ram >= 1:
-        chip_ram = int(chip_ram)
+    for i in range(0, 3): # No more than 4MB
+        chip_ram = int(math.pow(2, i)) / 2
+        if chip_ram >= 1:
+            chip_ram = int(chip_ram)
 
-      if check_list('Memory_ChipRam_' + str(chip_ram) + '.txt', sub_path) is True:
-        chip_ram = int(chip_ram * 2)
-        break
-     #chip_ram = old_chip_ram
-      else:
-        chip_ram = old_chip_ram
+        if check_list('Memory_ChipRam_' + str(chip_ram) + '.txt', sub_path) is True:
+            chip_ram = int(chip_ram * 2)
+            break
+        else:
+            chip_ram = old_chip_ram
 
-    # ' ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    # ' when we want different fast ram!!
+
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    # when we want different FAST ram!
 
     old_fast_ram = fast_ram
-    for i in range(0, 5): # No more than 16MB
-      fast_ram = int(math.pow(2, i))
-      if check_list('Memory_FastRam_' + str(fast_ram) + '.txt', sub_path) is True:
-        break
-     #fast_ram = old_fast_ram
-      else:
-        fast_ram = old_fast_ram
+    for i in range(0, 4): # No more than 8MB
+        fast_ram = int(math.pow(2, i))
+        if check_list('Memory_FastRam_' + str(fast_ram) + '.txt', sub_path) is True:
+            break
+        else:
+            fast_ram = old_fast_ram
     
     if has_fast_ram == 1:
-      fast_ram = 8
+        fast_ram = 8
 
-    # ' ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    # ' when we want different Z3 ram!!
+
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    # when we want different Z3 ram!
 
     for i in range(0, 8): # No more than 128MB
-      z3_ram = int(math.pow(2, i))
-      if check_list('Memory_Z3Ram_' + str(z3_ram) + '.txt', sub_path) is True:
-        break
-     #z3_ram = 0
-      else:
-        z3_ram = 0
+        z3_ram = int(math.pow(2, i))
+        if check_list('Memory_Z3Ram_' + str(z3_ram) + '.txt', sub_path) is True:
+            break
+        else:
+            z3_ram = 0
 
 
-    # '======== CHIPSET SETTINGS =======
-    # ' ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    # ' sprite collisions
+    # ====== CHIPSET SETTINGS =======
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+    # sprite collisions
     HW_SPRITES = ''
-    if check_list('Chipset_CollisionLevel_playfields.txt', sub_path) is True:
-      HW_SPRITES = 'PLAYFIELDS'
+    if check_list('Chipset_CollisionLevel_full.txt', sub_path) is True:
+        HW_SPRITES = 'FULL'
     if check_list('Chipset_CollisionLevel_none.txt', sub_path) is True:
-      HW_SPRITES = 'NONE'
+        HW_SPRITES = 'NONE'
+    if check_list('Chipset_CollisionLevel_playfields.txt', sub_path) is True:
+        HW_SPRITES = 'PLAYFIELDS'
     if check_list('Chipset_CollisionLevel_sprites.txt', sub_path) is True:
-      HW_SPRITES = 'SPRITES'
-    if check_list('HW_SPRITES.txt', sub_path) is True:
-      HW_SPRITES = 'FULL'
+        HW_SPRITES = 'SPRITES'
 
-    # ' blitter    
+    # blitter    
     HW_BLITS = ''        
     if check_list('Chipset_ImmediateBlitter.txt', sub_path) is True:
-      HW_BLITS = 'IMMEDIATE'
+        HW_BLITS = 'IMMEDIATE'
     if  check_list('Chipset_NormalBlitter.txt', sub_path) is True:
-      HW_BLITS = 'NORMAL'
+        HW_BLITS = 'NORMAL'
     if  check_list('Chipset_WaitBlitter.txt', sub_path) is True:
-      HW_BLITS = 'WAIT'
+        HW_BLITS = 'WAIT'
 
-    HW_FASTCOPPER = ''
-    if not check_list('Chipset_NoFastCopper.txt', sub_path) is False:
-      HW_FASTCOPPER = 'FALSE'
-
+    # copper
+    HW_FASTCOPPER = 'FALSE'
     if check_list('Chipset_FastCopper.txt', sub_path) is True:
-      HW_FASTCOPPER = 'TRUE'
+        HW_FASTCOPPER = 'TRUE'
 
-    # '======== CPU SETTINGS =======
-    # ' ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    # ======== CPU SETTINGS =======
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    # ' max emu speed
+    # max emu speed
     HW_SPEED = ''
     if check_list('CPU_MaxSpeed.txt', sub_path) is True:
-      HW_SPEED = 'MAX'
+        HW_SPEED = 'MAX'
     if check_list('CPU_RealSpeed.txt', sub_path) is True:
-      HW_SPEED = 'REAL'
+        HW_SPEED = 'REAL'
 
-    # ' clock speed
+    # clock speed
     if check_list('CPU_ClockSpeed_7.txt', sub_path) is True:
-      HW_SPEED = '7'
+        HW_SPEED = '7'
     if check_list('CPU_ClockSpeed_14.txt', sub_path) is True:
-      HW_SPEED = '14'
+        HW_SPEED = '14'
     if check_list('CPU_ClockSpeed_28.txt', sub_path) is True:
-      HW_SPEED = '28'
+        HW_SPEED = '28'
 
     HW_CPU = ''
-    # ' cpu model 68000
+    # cpu model 68000
     if check_list('CPU_68000.txt', sub_path) is True:
-      HW_CPU = '68000'
+        HW_CPU = '68000'
                                 
-    # ' cpu model 68010
+    # cpu model 68010
     if check_list('CPU_68010.txt', sub_path) is True:
-      HW_CPU = '68010'
-      HW_24BIT = 'FALSE'
+        HW_CPU = '68010'
+        HW_24BIT = 'FALSE'
                                 
-    # ' cpu model 68040
+    # cpu model 68040
     if check_list('CPU_68040.txt', sub_path) is True:
-      HW_CPU = '68040'
-      HW_24BIT = 'FALSE'
+        HW_CPU = '68040'
+        HW_24BIT = 'FALSE'
 
-    # ' 24 bit addressing 
+    # 24 bit addressing 
     HW_24BIT = ''
     if not check_list('CPU_No24BitAddress.txt', sub_path) is False:
-      HW_24BIT = 'FALSE'
+        HW_24BIT = 'FALSE'
              
-    #   compatible CPU 
+    # compatible CPU 
     HW_CPUCOMP = ''
     if check_list('CPU_Compatible.txt', sub_path) is True:
-      HW_CPUCOMP = 'TRUE'
+        HW_CPUCOMP = 'TRUE'
                     
-    #   cycle_exact = check_list('CPU_CycleExact.txt', sub_path)
+    # cycle_exact = check_list('CPU_CycleExact.txt', sub_path)
 
-    #JIT Cache
-    HW_JIT = ''
-    if check_list('CPU_ForceJIT.txt',sub_path) == True:
-      HW_JIT = 'TRUE'
-      HW_SPEED = 'MAX'
-    elif check_list('CPU_NoJIT.txt', sub_path) == True:
-      HW_JIT = 'FALSE'
+    # JIT Cache
+    HW_JIT = 'FALSE'
+    if check_list('CPU_ForceJIT.txt',sub_path) is True:
+        HW_JIT = 'TRUE'
+        HW_SPEED = 'MAX'
 
     # CHIPSET
     HW_CHIPSET = ''
-    if check_list('CPU_ForceAGA.txt',sub_path) == True:
-      HW_CHIPSET = 'AGA'
-    elif check_list('CPU_ForceECS.txt', sub_path) == True:
-      HW_CHIPSET = 'ECS'  
-    elif check_list('CPU_ForceOCS.txt', sub_path) == True:
-      HW_CHIPSET = 'OCS'  
+    if check_list('CPU_ForceAGA.txt',sub_path) is True:
+        HW_CHIPSET = 'AGA'
+    elif check_list('CPU_ForceECS.txt', sub_path) is True:
+        HW_CHIPSET = 'ECS'  
+    elif check_list('CPU_ForceOCS.txt', sub_path) is True:
+        HW_CHIPSET = 'OCS'  
 
     if file_name.find('_AGA') > -1:
-      HW_CHIPSET = 'AGA'                                       
+        HW_CHIPSET = 'AGA'                                       
     if file_name.find('_CD32') > -1:
-      HW_CHIPSET = 'AGA'
-      use_cd32_pad = True
+        HW_CHIPSET = 'AGA'
+        use_cd32_pad = True
 
 
     # ================================
     # building the hardware section
     hardware = ''
     if HW_BLITS != '':
-      hardware += ('BLITTER=') + HW_BLITS + chr(10)
-
-    if HW_SPEED != '':
-      hardware += ('CLOCK=') + HW_SPEED + chr(10)
+        hardware += ('BLITTER=') + HW_BLITS + chr(10)
 
     if chip_ram != 2:
-      hardware += ('CHIP_RAM=') + str(chip_ram) + chr(10)
+        hardware += ('CHIP_RAM=') + str(chip_ram) + chr(10)
 
     if HW_CHIPSET != '':
-      hardware += ('CHIPSET=') + HW_CHIPSET + chr(10)
+        hardware += ('CHIPSET=') + HW_CHIPSET + chr(10)
                     
+    if HW_SPEED != '':
+        hardware += ('CLOCK=') + HW_SPEED + chr(10)
+
     if HW_CPU != '':
-      hardware += ('CPU=') + HW_CPU + chr(10)
+        hardware += ('CPU=') + HW_CPU + chr(10)
                 
     if HW_24BIT != '':
-      hardware += ('CPU_24BITADDRESSING=') + HW_24BIT + chr(10)
+        hardware += ('CPU_24BITADDRESSING=') + HW_24BIT + chr(10)
 
     if HW_CPUCOMP != '':
-      hardware += ('CPU_COMPATIBLE=') + HW_CPUCOMP + chr(10)
+        hardware += ('CPU_COMPATIBLE=') + HW_CPUCOMP + chr(10)
 
     if HW_FASTCOPPER != '':
-      hardware += ('FAST_COPPER=') + HW_FASTCOPPER + chr(10)
+        hardware += ('FAST_COPPER=') + HW_FASTCOPPER + chr(10)
 
     if fast_ram != 4:
-      hardware += ('FAST_RAM=') + str(fast_ram) + chr(10)
+        hardware += ('FAST_RAM=') + str(fast_ram) + chr(10)
 
     if HW_JIT != '':
-      hardware += ('JIT=') + HW_JIT + chr(10)
+        hardware += ('JIT=') + HW_JIT + chr(10)
 
     if HW_NTSC != '':
-      hardware += ('NTSC=') + HW_NTSC + chr(10)
+        hardware += ('NTSC=') + HW_NTSC + chr(10)
 
     if use_mouse1 == True:
-      hardware += ('PRIMARY_CONTROL=MOUSE') + chr(10)
+        hardware += ('PRIMARY_CONTROL=MOUSE') + chr(10)
     else:
-      hardware += ('PRIMARY_CONTROL=JOYSTICK')  + chr(10)       
+        hardware += ('PRIMARY_CONTROL=JOYSTICK')  + chr(10)       
 
     if use_mouse1 == True:
-      hardware += ('PORT0=MOUSE') + chr(10)
+        hardware += ('PORT0=MOUSE') + chr(10)
     elif use_cd32_pad == True:
-      hardware += ('PORT0=CD32') + chr(10)
+        hardware += ('PORT0=CD32') + chr(10)
     else:
-      hardware += ('PORT0=JOY')  + chr(10)       
+        hardware += ('PORT0=JOY')  + chr(10)       
 
     if use_mouse2 == True:
-      hardware += ('PORT1=MOUSE') + chr(10)
+        hardware += ('PORT1=MOUSE') + chr(10)
     elif use_cd32_pad == True:
-      hardware += ('PORT1=CD32')  + chr(10)       
+        hardware += ('PORT1=CD32')  + chr(10)       
     else:
-      hardware += ('PORT1=JOY')  + chr(10)      
+        hardware += ('PORT1=JOY')  + chr(10)      
 
-    # SCREEN OPTIONS
+    if HW_AUTO_CENTER == 'FALSE':
+        hardware += ('SCREEN_AUTOHEIGHT=') + HW_AUTO_CENTER + chr(10)
+        hardware += ('SCREEN_HEIGHT=') + HW_HEIGHT + chr(10)
+    else:
+        hardware += ('SCREEN_AUTOHEIGHT=') + HW_AUTO_CENTER + chr(10)
+
     if HW_H_CENTER != '':
-      hardware += ('SCREEN_CENTERH=') + HW_H_CENTER + chr(10)
+        hardware += ('SCREEN_CENTERH=') + HW_H_CENTER + chr(10)
 
     if HW_V_CENTER != '':
-      hardware += ('SCREEN_CENTERV=') + HW_V_CENTER + chr(10)
-
-    if HW_HEIGHT != '':
-      hardware += ('SCREEN_HEIGHT=') + HW_HEIGHT + chr(10)
+        hardware += ('SCREEN_CENTERV=') + HW_V_CENTER + chr(10)
 
     if HW_WIDTH != '':
-      hardware += ('SCREEN_WIDTH=') + HW_WIDTH + chr(10)
+        hardware += ('SCREEN_WIDTH=') + HW_WIDTH + chr(10)
 
     if HW_SPRITES != '':
-      hardware += ('SPRITES=') + HW_CPU + chr(10)
-                    
+        hardware += ('SPRITES=') + HW_CPU + chr(10)
+
     if z3_ram != 0:
-      hardware += ('Z3_RAM=') + str(z3_ram) + chr(10)
+        hardware += ('Z3_RAM=') + str(z3_ram) + chr(10)
 
     # custom controls
     custom_file = 'customcontrols/' + full_game_name + '.controls'
     custom_text = ''
                                 
+    # remove any items which are not amiberry custom settings
     if os.path.isfile(custom_file) == True:
-      # remove any items which are not amiberry custom settings
-      with open(custom_file, 'r') as f:
-        content = f.readlines()
+        with open(custom_file, 'r') as f:
+            content = f.readlines()
         f.close()
 
-      for this_line in content:
-        if this_line.find('amiberry_custom') > -1 and '\n' in this_line:
-          custom_text += chr(9) + chr(9) + this_line
-        elif this_line.find('amiberry_custom') > -1 and not '\n' in this_line:
-          custom_text += chr(9) + chr(9) + this_line + chr(10)
+        for this_line in content:
+            if this_line.find('amiberry_custom') > -1 and '\n' in this_line:
+                custom_text += chr(9) + chr(9) + this_line
+            elif this_line.find('amiberry_custom') > -1 and not '\n' in this_line:
+                custom_text += chr(9) + chr(9) + this_line + chr(10)
 
     extra_libs = 'False'
     if check_list('WHD_Libraries.txt', sub_path) is True:
-      extra_libs = 'True'
+        extra_libs = 'True'
 
-    ##generate XML
+    # generate XML
     XML = XML + chr(9) + '<game filename="' + file_name.replace('&', '&amp;') + '" sha1="' + ArchiveSHA + '">' + chr(10)
     XML = XML + chr(9) + chr(9) + '<name>' + full_game_name.replace('&', '&amp;') + '</name>' + chr(10)
     XML = XML + chr(9) + chr(9) + '<subpath>' + sub_path.replace('&', '&amp;') + '</subpath>' + chr(10)
@@ -457,14 +456,12 @@ for item in root.findall('game'):
     XML = XML + chr(9) + chr(9) + '<slave_default>' + slave_default.replace('&', '&amp;') + '</slave_default>' + chr(10)
     XML = XML + chr(9) + chr(9) + '<slave_libraries>' + extra_libs  + '</slave_libraries>' + chr(10)
     XML = XML + chr(9)  + chr(9) +  SLAVE_XML
-#    XML = XML + SLAVE_XML
-#    XML = XML + chr(9)  + chr(9) + '<hardware>'
     XML = XML + '<hardware>'
     XML = XML + chr(10) + chr(9) + chr(9) + hardware.replace(chr(10), chr(10) + chr(9) + chr(9) )
     XML = XML + chr(10) + chr(9) + chr(9) + '</hardware>' + chr(10)
 
     if len(custom_text)>0:
-      XML = XML + chr(9)+ chr(9) + '<custom_controls>' + chr(10) + custom_text  + chr(9) + chr(9) + '</custom_controls>' + chr(10)
+        XML = XML + chr(9)+ chr(9) + '<custom_controls>' + chr(10) + custom_text  + chr(9) + chr(9) + '</custom_controls>' + chr(10)
                 
     XML = XML + chr(9) + '</game>' + chr(10)
 
@@ -480,6 +477,7 @@ XML = XML_HEADER + XML + XML_FOOTER
 # =======================================
 # print XML and other files
 # =======================================
+print()
 print('Generating XML File')
 text_file = open(whdbtmp, 'w+')
 text_file.write(XML)
