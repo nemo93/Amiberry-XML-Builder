@@ -211,16 +211,16 @@ with ftpcon as host:
             if file_mtime >= utc_datetime_delta and fext == fpattern: 
               if fpath not in gamelist:
                 gamelist.append(fpath)
-
 host.close()
 
+# Download recent packages
 for item in gamelist:
     try:         
-      print("retrieving file:", os.path.basename(item) + " to " + input_directory)  
-      urllib.request.urlretrieve('ftp://'+ftplogin+':'+ftppass+'@'+ftphost+item, input_directory + "/" + os.path.basename(item))
+        print("retrieving file:", os.path.basename(item) + " to " + input_directory)  
+        urllib.request.urlretrieve('ftp://'+ftplogin+':'+ftppass+'@'+ftphost+item, input_directory + "/" + os.path.basename(item))
     except:
-      print("WARNING: File could not be downloaded")
-      sys.exit(1)
+        print("WARNING: File could not be downloaded")
+        sys.exit(1)
 
 # =======================================
 # Backup 
@@ -249,7 +249,7 @@ if FULL_REFRESH == False:
 
     a = XML_OLD.find("<whdbooter")
     for b in range(a , a+100):
-        if XML_OLD[b]==">":
+        if XML_OLD[b] == ">":
             break
 
     c = XML_OLD.find("</whdbooter")            
@@ -270,17 +270,16 @@ for file2 in Path(input_directory + "/").glob('**/*.lha'):
     this_file = os.path.basename(archive_path)
 
     # check for a skip, and that its value for skipping
-    if (FULL_REFRESH==False and XML_OLD.find('<game filename="' + this_file[0:len(this_file)-4].replace("&", "&amp;") + '"')>-1):        
+    if (FULL_REFRESH == False and XML_OLD.find('<game filename="' + this_file[0:len(this_file)-4].replace("&", "&amp;") + '"') > -1):
         print("Skipping: " + text_utils.FontColours.OKBLUE + text_utils.FontColours.BOLD  + this_file + text_utils.FontColours.ENDC)
         COMPLETE_MSG = COMPLETE_MSG + "Skipped: " + this_file + chr(10)
-    elif text_utils.left(this_file,2)=="._":
-        ...
+    elif text_utils.left(this_file,2) == "._":
         count = count - 1
     else:
         print()
         print("Processing: " + text_utils.FontColours.FAIL + text_utils.FontColours.BOLD  + this_file + text_utils.FontColours.ENDC)
+
         try:
-            print("in the main loop")
             slave_archive = LhaSlaveArchive(archive_path, hash_algorithm)
             file_details = openretroid.parse_file(archive_path)
                 
@@ -296,15 +295,15 @@ for file2 in Path(input_directory + "/").glob('**/*.lha'):
             HW_Z3 = 0
                 
             hardware = ""
-            SLAVE_XML=""
-            first_slave=""
+            SLAVE_XML = ""
+            first_slave = ""
             UUID = ""
-            n=1
+            n = 1
             default_slave = ""
             default_slave_found = False
                 
-            UUID = file_details['uuid']                    
-            print("Openretro URL: " + text_utils.FontColours.UNDERLINE + text_utils.FontColours.OKBLUE +  "http://www.openretro.org/game/{}".format(UUID) + text_utils.FontColours.ENDC)
+            UUID = file_details['uuid']
+            print("Openretro URL: " + text_utils.FontColours.UNDERLINE + text_utils.FontColours.OKBLUE +  "https://www.openretro.org/game/{}".format(UUID) + text_utils.FontColours.ENDC)
             #print("Variant UUID: {}".format(file_details['uuid']))
             print()
 
@@ -325,9 +324,9 @@ for file2 in Path(input_directory + "/").glob('**/*.lha'):
                 #print(slave.hash_digest + text_utils.FontColours.ENDC)
 
                 if default_slave != "":
-                    if  slave.name.find(default_slave) >0:
+                    if slave.name.find(default_slave) >0:
                         default_slave_found = True
-                        
+
                 # extract the slave as a temp file
                 fp = tempfile.NamedTemporaryFile()
                 fp.write(slave.data)
@@ -367,12 +366,12 @@ for file2 in Path(input_directory + "/").glob('**/*.lha'):
                 # update the value if the highest slave requirement
                 if temp_chip_ram > HW_CHIP:
                     whd_chip_ram = temp_chip_ram
-                            
-                # round up any wierd fastram values       
+
+                # round up any weird fastram values       
                 temp_fast_ram = this_slave.exp_mem/1048576
                 for i in range(0, 5):
                     low_ram = int(math.pow(2, i-1))
-                    high_ram = int(math.pow(2, i )) 
+                    high_ram = int(math.pow(2, i)) 
                     if temp_fast_ram > low_ram and temp_fast_ram < high_ram:
                         temp_fast_ram = high_ram
 
@@ -398,7 +397,7 @@ for file2 in Path(input_directory + "/").glob('**/*.lha'):
                     SLAVE_XML = SLAVE_XML + chr(9)+ chr(9)+ chr(9) + '</custom>'  + chr(10)
 
                 SLAVE_XML = SLAVE_XML + chr(9)+ chr(9)+ '</slave>'  + chr(10)
-                n=n+1
+                n = n + 1
                     
                 # end of slave checking
 
@@ -410,11 +409,10 @@ for file2 in Path(input_directory + "/").glob('**/*.lha'):
             if default_slave_found == False:
                 default_slave = ""
                         
-            if len(slave_archive.slaves) == 1 and default_slave=="":
+            if len(slave_archive.slaves) == "1" and default_slave == "":
                 default_slave = last_slave
                 def_msg = " (Only slave in archive search)"
-
-            elif default_slave=="":
+            elif default_slave == "":
                 default_slave = first_slave
                 def_msg = " (First slave in archive search)"
                         
@@ -462,6 +460,7 @@ for file2 in Path(input_directory + "/").glob('**/*.lha'):
                 HW_NTSC = "TRUE"
             elif this_file.find("NTSC") > -1:
                 HW_NTSC = "TRUE"
+
                             
             # ======== CONTROL SETTINGS =======
             #  mouse / mouse 2 / CD32
@@ -469,15 +468,14 @@ for file2 in Path(input_directory + "/").glob('**/*.lha'):
             use_mouse1 = check_list("Control_Port0_Mouse.txt", sub_path)
             use_mouse2 = check_list("Control_Port1_Mouse.txt", sub_path)
             use_cd32_pad = check_list("Control_CD32.txt", sub_path)
-
-
+    
             # ======== MEMORY SETTINGS =======
             # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
             # quick clean-up on WHDLoad memory requirements
             whd_z3_ram = 0
 
-            if whd_fast_ram>8:
+            if whd_fast_ram > 8:
                 whd_z3_ram = whd_fast_ram
                 whd_fast_ram = 0
 
@@ -502,7 +500,6 @@ for file2 in Path(input_directory + "/").glob('**/*.lha'):
             if whd_chip_ram >= chip_ram: 
                 chip_ram = whd_chip_ram
 
-
             # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
             # when we want different FAST ram!
 
@@ -516,7 +513,6 @@ for file2 in Path(input_directory + "/").glob('**/*.lha'):
             # whd fast-memory overwrite
             if whd_fast_ram >= fast_ram and whd_fast_ram <= 8:
                 fast_ram = whd_fast_ram
-
 
             # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
             # when we want different Z3 ram!
@@ -596,7 +592,7 @@ for file2 in Path(input_directory + "/").glob('**/*.lha'):
 
             # 24 bit addressing 
             HW_24BIT = ""
-            if not check_list("CPU_No24BitAddress.txt", sub_path) is False:
+            if check_list("CPU_No24BitAddress.txt", sub_path) is True:
                 HW_24BIT = "FALSE"
              
             # compatible CPU 
@@ -682,17 +678,17 @@ for file2 in Path(input_directory + "/").glob('**/*.lha'):
             else:
                 hardware += ("PORT1=JOY")  + chr(10)      
 
-            if HW_AUTO_HEIGHT == 'FALSE':
-                hardware += ('SCREEN_AUTOHEIGHT=') + HW_AUTO_HEIGHT + chr(10)
-                hardware += ('SCREEN_HEIGHT=') + HW_HEIGHT + chr(10)
+            if HW_AUTO_HEIGHT == "FALSE":
+                hardware += ("SCREEN_AUTOHEIGHT=") + HW_AUTO_HEIGHT + chr(10)
+                hardware += ("SCREEN_HEIGHT=") + HW_HEIGHT + chr(10)
             else:
-                hardware += ('SCREEN_AUTOHEIGHT=') + HW_AUTO_HEIGHT + chr(10)
+                hardware += ("SCREEN_AUTOHEIGHT=") + HW_AUTO_HEIGHT + chr(10)
 
-            if HW_H_CENTER != '':
-                hardware += ('SCREEN_CENTERH=') + HW_H_CENTER + chr(10)
+            if HW_H_CENTER != "":
+                hardware += ("SCREEN_CENTERH=") + HW_H_CENTER + chr(10)
 
-            if HW_V_CENTER != '':
-                hardware += ('SCREEN_CENTERV=') + HW_V_CENTER + chr(10)
+            if HW_V_CENTER != "":
+                hardware += ("SCREEN_CENTERV=") + HW_V_CENTER + chr(10)
 
             if HW_WIDTH != "":
                 hardware += ("SCREEN_WIDTH=") + HW_WIDTH + chr(10)
@@ -713,11 +709,11 @@ for file2 in Path(input_directory + "/").glob('**/*.lha'):
                     content = f.readlines()
                     f.close()
                                     
-            for this_line in content:
-                if this_line.find('amiberry_custom') > -1 and '\n' in this_line:
-                    custom_text += chr(9) + chr(9) + this_line
-                elif this_line.find('amiberry_custom') > -1 and not '\n' in this_line:
-                    custom_text += chr(9) + chr(9) + this_line + chr(10)
+                for this_line in content:
+                    if this_line.find('amiberry_custom') > -1 and '\n' in this_line:
+                        custom_text += chr(9) + chr(9) + this_line
+                    elif this_line.find('amiberry_custom') > -1 and not '\n' in this_line:
+                        custom_text += chr(9) + chr(9) + this_line + chr(10)
 
             extra_libs = "False"
             if check_list("WHD_Libraries.txt", sub_path) is True:
@@ -738,15 +734,15 @@ for file2 in Path(input_directory + "/").glob('**/*.lha'):
             XML = XML + chr(10) + chr(9) + chr(9) + hardware.replace(chr(10), chr(10) + chr(9) + chr(9) )
             XML = XML + chr(10) + chr(9) + chr(9) + '</hardware>' + chr(10)
 
-            if len(custom_text)>0:
+            if len(custom_text) > 0:
                 XML = XML + chr(9) + chr(9) + '<custom_controls>' + chr(10) + custom_text + chr(9) + chr(9) + '</custom_controls>' + chr(10)
-                
+
             XML = XML + chr(9) + '</game>' + chr(10)
 
         except FileNotFoundError:
             print("Could not find LHA archive: {}".format(archive_path))
             ERROR_MSG = ERROR_MSG + "Could not find LHA archive: {}".format(this_file)  + chr(10)
-                
+
         except lhafile.BadLhafile:
             print("Could not read LHA archive: {}".format(archive_path))
             ERROR_MSG = ERROR_MSG + "Could not read LHA archive: {}".format(this_file)  + chr(10) 
@@ -759,8 +755,8 @@ for file2 in Path(input_directory + "/").glob('**/*.lha'):
         except:
             print("Something went wrong with LHA archive: {}".format(archive_path))
             ERROR_MSG = ERROR_MSG + "Could not read LHA archive: {}".format(this_file)  + chr(10) 
-       
-    # limit  it to a certian number of archives (for testing)
+
+    # limit to a certian number of archives (for testing)
     if count >= 9999:
         break
     count = count + 1
