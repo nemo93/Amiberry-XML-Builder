@@ -59,14 +59,6 @@ def check_list(in_file, game_name):
 def sortchildrenby(parent, attr):
     parent[:] = sorted(parent, key=lambda child: child.get(attr))
 
-# Clean up a dir
-# 1st parameter is the directory
-# 2nd parameter is the file extension to be deleted
-def tmpcleanup(inputdir, filext):
-    for fileclean in os.listdir(inputdir):
-        if fileclean.endswith(filext):
-            os.remove(os.path.join(inputdir, fileclean))
-
 # =======================================
 # main section starting here...
 # =======================================
