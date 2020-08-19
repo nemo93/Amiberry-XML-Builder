@@ -1,15 +1,1 @@
-Scanned file log: 2020-08-17 at 02:35:51
-Skipped: Frontier_v1.3_1960.lha
-Skipped: JamesPond3_v2.0_AGA_0688.lha
-Skipped: Frontier_v1.3_Fr_2745.lha
-Scanned: James Pond - Underwater Agent
-Skipped: JamesPond3_v2.0_CD32_Fr.lha
-Skipped: Frontier_v1.3_CD32.lha
-Skipped: Frontier_v1.3_De_0505.lha
-Skipped: IndyHeat_v1.21_2436.lha
-Skipped: CrazyCars3_v2.0_3068.lha
-Scanned: Smarty And The Nasty Gluttons
-Skipped: JamesPond3_v2.0_CD32.lha
-Skipped: Dune_v3.1_Gr.lha
-Skipped: ItCameFromTheDesert_v2.0_Gr.lha
-Skipped: Frontier_v1.3_Cz.lha
+Scanned file log: 2020-08-19 at 02:30:55
