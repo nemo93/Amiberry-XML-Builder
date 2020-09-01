@@ -1,2 +1,6 @@
-Scanned file log: 2020-08-31 at 02:31:27
-Skipped: DangerFreak_v1.0_0975.lha
+Scanned file log: 2020-09-01 at 02:33:16
+Scanned: James Pond - Underwater Agent
+Scanned: James Pond 3 [CD32]
+Scanned: James Pond 3 - Operation Starfish [AGA]
+Scanned: James Pond 3 [CD32] (Francais)
+Scanned: Crazy Cars III
