@@ -1,6 +1,3 @@
-Scanned file log: 2020-09-01 at 02:33:16
-Scanned: James Pond - Underwater Agent
-Scanned: James Pond 3 [CD32]
-Scanned: James Pond 3 - Operation Starfish [AGA]
-Scanned: James Pond 3 [CD32] (Francais)
-Scanned: Crazy Cars III
+Scanned file log: 2020-09-03 at 02:31:56
+Skipped: CandyPuzzle_v1.0_CD32.lha
+Scanned: Highway Hawks
