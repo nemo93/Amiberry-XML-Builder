@@ -1,1 +1,6 @@
-Scanned file log: 2020-10-11 at 02:30:47
+Scanned file log: 2020-10-13 at 02:32:30
+Scanned: Death Mask [CD32]
+Skipped: AppleHunt_v1.0.lha
+Scanned: Death Mask [AGA]
+Scanned: Mission Elevator
+Scanned: Death Mask
