@@ -1,6 +1,12 @@
-Scanned file log: 2020-11-11 at 02:31:50
-Scanned: Cave Runner
-Scanned: Gordian Tomb
+Scanned file log: 2020-11-15 at 02:35:57
 Scanned: Super Cars II
-Scanned: Smash
-Skipped: BombJack_v1.1_2797.lha
+Skipped: MagiclandDizzy_v1.5_1145.lha
+Scanned: Pinball Fntsies [AGA] (NTSC)
+Scanned: Pinball Fantasies
+Skipped: WesternGames_v1.0_0790.lha
+Scanned: Pinball Fntsies [AGA] (NTSC)Chip
+Scanned: Pinball Fantasies [AGA]
+Scanned: Pinball Fantasies [CD32]
+Scanned: Pinball Fantasies [CD32] (Chip)
+Scanned: Pinball Fantasies [AGA]
+Skipped: JamesPond2_v1.0_CD32.lha
