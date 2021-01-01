@@ -1,5 +1,8 @@
-Scanned file log: 2020-12-31 at 02:33:57
-Scanned: Acoustic Silence
-Scanned: Imperial Tunes
-Scanned: Toxic Waste
-Skipped: PrawoKrwi_v2.0_AGA_Pl.lha
+Scanned file log: 2021-01-01 at 02:32:55
+Scanned: 20000 Leagues Under The Sea (Espanol)
+Scanned: 242
+Scanned: 20000 Leagues Under The Sea
+Scanned: Imperial Tunes 2
+Scanned: 20000 Lieues Sous Les Mers Nl
+Scanned: 20000 Meilen Unter Dem Meer (Deutsch)
+Scanned: 20000 Lieues Sous Les Mers (Francais)
